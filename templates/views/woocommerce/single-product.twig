@@ -1,0 +1,78 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    {% do action('woocommerce_before_single_product') %}
+
+    <header class="product-header" style="background-image: url({{ post.thumbnail.src('large') }})">
+        <div class="container auto flex">
+            <aside class="product-header__floater">
+                <span class="product-header__category">
+                    {{ fn('wc_get_product_category_list', post.ID) }}
+                </span>
+                <h1 class="product-header__title">{{ post.title }}</h1>
+            </aside>
+        </div>
+    </header>
+
+    <div class="container auto product">
+        <main class="grid">
+            <section class="col-9 content">
+                <h2 class="product-title">
+                    Productspecificaties
+                </h2>
+                <h3 class="product-title">
+                    Productbeschrijving
+                </h3>
+                <div class="product-content">
+                    {{ post.content }}
+                </div>
+            </section>
+            <div class="col-3">
+                <aside class="product-sidebar">
+                    <select>
+                        <option>Basis</option>
+                        <option>Gevorderd</option>
+                    </select>
+
+                    <span class="product-price" style="display: block">
+                        Vanaf: <span class="product-price-number">&euro; {{ product.get_price }}</span>
+                    </span>
+
+                    <form method="GET" class="product-add-to-cart-form">
+                        <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                        <input type="hidden" value="{{ post.ID }}" id="add-to-cart" name="add-to-cart">
+                        <button type="submit" class="product-add-to-cart">
+                            <i class="fas fa-shopping-cart"></i> bestellen
+                        </button>
+                    </form>
+
+                    <hr>
+
+                    <span class="product-status available">Beschikbaar:</span> binnen 3 weken gerealiseerd
+
+                    <ol class="product-usp">
+                        <li>Voeg dit product toe aan uw bestelling</li>
+                        <li>Geef uw wensen op tijdens het afrekenen</li>
+                        <li>Onze adviseurs nemen contact met u op voor een afspraak</li>
+                    </ol>
+                </aside>
+            </div>
+        </main>
+
+        <section>
+            <h4 class="product-title title-relateds">Vergelijkbare diensten</h4>
+
+            <div class="grid">
+                {% for related in related_products %}
+                    <div class="col-4">
+                        <article>
+                            <a href="{{ related.link }}">
+                                {{ related.title }}
+                            </a>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

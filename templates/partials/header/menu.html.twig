@@ -1,0 +1,10 @@
+<nav class="navbar">
+    {% for item in primaryMenu.items %}
+        <a class="nav-item" href="{{ item.link }}" title="{{ item.title }}">{{ item.title }}</a>
+    {% endfor %}
+
+    <form action="/" class="search-form js-search-form">
+        <input id="s" name="s" type="search" class="search-form-input" placeholder="{{ __('Search') }}..." />
+        <button type="submit" class="search-form-button"><i class="fas fa-search"></i></button>
+    </form>
+</nav>

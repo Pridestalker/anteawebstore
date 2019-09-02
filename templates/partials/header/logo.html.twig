@@ -1,0 +1,8 @@
+{% set _logo = Image(theme.theme_mod('custom_logo')) %}
+    <a href="/">
+        <img
+                alt="{{ _logo.alt?? 'Logo ' ~ site.name }}"
+                class="custom-logo"
+                id="logo_{{ post.ID }}"
+                src="{{ _logo.src }}" />
+    </a>

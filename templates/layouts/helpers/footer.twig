@@ -1,0 +1,38 @@
+<footer class="topper">
+    <div class="container flex auto">
+        {% for item in theme.theme_mod('footer_top_bar_content') %}
+            <span>
+                <i class="{{ item.icon|replace({'_': ' '}) }}"></i> {{ item.text }}
+            </span>
+        {% endfor %}
+    </div>
+</footer>
+
+<footer class="footer">
+    <div class="container flex auto grid">
+        <div class="col-3">
+            <h3>SITEMAP</h3>
+            <nav class="footer-menu">
+                {% for item in footerMenu.items %}
+                    <a href="{{ item.link }}" class="footer-menu-item" title="{{ item.title }}">
+                        {{ item.title }}
+                    </a>
+                {% endfor %}
+            </nav>
+        </div>
+        <div class="col-3">
+            {% do fn('elementor_theme_do_location', 'footer-column-2') %}
+        </div>
+        <div class="col-3">
+            {% do fn('elementor_theme_do_location', 'footer-column-mailchimp') %}
+        </div>
+        <div class="col-3">
+            {% do fn('elementor_theme_do_location', 'footer-column-logo') %}
+        </div>
+    </div>
+</footer>
+
+<link rel="stylesheet" href="{{ theme.link }}/dist/styles/main.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/7c29995ac3.js" async defer></script>
+<script src="{{ theme.link }}/dist/scripts/main.js"></script>

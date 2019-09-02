@@ -1,0 +1,22 @@
+<!-- Header topper -->
+<header class="header content">
+    <div class="container auto flex size-full">
+        <span>
+            <i class="fas fa-check"></i> Bestel onze ingenieursdiensten snel en eenvoudig online
+        </span>
+
+        <nav class="ml-auto top-navigation">
+            {% for item in topMenu.items %}
+                {% set _icon = fn('carbon_get_nav_menu_item_meta', item.id, 'crb_menu_icon') %}
+                <a class="top-navigation-item" href="{{ item.link }}" title="{{ item.title }}">
+                    {% if _icon %}
+                        <i class="{{ _icon|replace({'_': ' '}) }}"></i>
+                    {% endif %}
+                    <span class="not-mobile">
+                        {{ item.title }}
+                    </span>
+                </a>
+            {% endfor %}
+        </nav>
+    </div>
+</header>
