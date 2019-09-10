@@ -425,6 +425,8 @@ template {
   font-weight: 600;
   color: #01597e;
   font-size: 20px;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .product-card--v--footer {
