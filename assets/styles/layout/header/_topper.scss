@@ -1,0 +1,33 @@
+.header {
+  background: theme-get-color($header-background);
+  color: theme-get-color($header-color);
+
+  padding: $header-padding;
+
+  width: $header-width;
+
+  @if $header-is-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    .admin-bar & {
+      top: $WP_ADMIN_BAR_HEIGHT;
+    }
+  }
+}
+
+.top-navigation-item {
+  @extend %transitioning;
+  color: theme-get-color($header-color);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:not(:last-of-type) {
+    margin-right: $logo-bar-menu-spacing;
+  }
+
+  &:hover {
+    color: mix(theme-get-color($header-color), $nav-item-color-hover);
+  }
+}

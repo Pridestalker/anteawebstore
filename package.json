@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "antea-sassy": "next",
+    "bourbon-neat": "^4.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "3.2.0",
     "eslint": "^6.0.1",

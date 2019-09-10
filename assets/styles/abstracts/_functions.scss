@@ -1,0 +1,42 @@
+@function theme-get-color($color, $inverted: false) {
+  @if type_of($color) != 'string' {
+    @error 'No Color passed';
+  }
+  @if $inverted {
+    @return nth(map-get($colors, $color), 2);
+  }
+  @return nth(map-get($colors, $color), 1);
+}
+
+@function find-color-invert($color) {
+  @if lightness($color) > 0.5 {
+    @return hsla(0, 0%, 0%, 0.7);
+  }
+  @return hsla(0, 100%, 100%, 1);
+}
+
+@function get-spacing($size: 'md') {
+  @if not map-has-key($spacing, $size) {
+    @error 'Key not found. Key should be one of #{map-keys($spacing)}';
+  }
+  @return map-get($spacing, $size);
+}
+
+@function column-width($columns) {
+  @if null == $columns {
+    @error 'Columns not supplied correctly';
+  }
+  @return 100% / $columns;
+}
+
+@function get-font($name) {
+  @if not $name {
+    @error 'Font name not supplied';
+  }
+
+  @if not map-has-key($fonts, $name) {
+    @error 'Font key not in ' map-keys($fonts);
+  }
+
+  @return unquote(map-get($fonts, $name));
+}

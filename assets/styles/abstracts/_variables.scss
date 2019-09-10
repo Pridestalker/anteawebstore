@@ -1,0 +1,76 @@
+// Base color variables
+$primary: hsl(0, 0%, 100%) !default;
+$primary-invert: find-color-invert($primary) !default;
+
+$secondary: hsl(0, 0%, 0%) !default;
+$secondary-invert: find-color-invert($secondary) !default;
+
+$success: hsl(88, 85%, 26%) !default;
+$succes-invert: find-color-invert($success) !default;
+
+$white: hsla(0, 100%, 100%, 1) !default;
+$white-invert: find-color-invert($white) !default;
+
+$black: hsla(0, 0%, 0%, 0.7) !default;
+$black-invert: find-color-invert($black) !default;
+
+$colors: () !default;
+
+$theme-colors: (
+  'primary': ($primary, $primary-invert),
+  'secondary': ($secondary, $secondary-invert),
+  'success': ($success, $succes-invert),
+  'white': ($white, $white-invert),
+  'black': ($black, $black-invert),
+) !default;
+
+$colors: map-merge($theme-colors, $colors);
+
+// Base spacing variables
+$spacing: () !default;
+
+$theme-spacing: (
+  'xs': 0.25rem,
+  'sm': 0.5rem,
+  'md': 1rem,
+  'lg': 1.5rem,
+  'xl': 2rem
+) !default;
+
+$spacing: map-merge($theme-spacing, $spacing);
+
+// Breakpoint variables
+$screens: (
+  'sm': 414px,
+  'md': 768px,
+  'lg': 1240px,
+  'xl': 1440px
+) !default;
+
+// Base font variables
+
+$fonts: () !default;
+
+$theme-fonts: (
+  'base': 'Open Sans, System-UI',
+  'title': '"Montserrat", "Roboto", System-UI'
+) !default;
+
+$fonts: map-merge($theme-fonts, $fonts);
+
+// Sizes
+$sizes: () !default;
+
+$theme-sizes: (
+  'half': '50%',
+  'full': '100%',
+  'screen': '100vw'
+) !default;
+
+$sizes: map-merge($theme-sizes, $sizes);
+
+$grid-columns: 12 !default;
+$grid-gap: 20px !default;
+
+//noinspection Stylelint
+$WP_ADMIN_BAR_HEIGHT: 32px;

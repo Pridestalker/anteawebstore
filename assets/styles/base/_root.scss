@@ -1,0 +1,6 @@
+:root {
+  @each $color-name, $value in $colors {
+    --#{$color-name}: #{theme-get-color($color-name)};
+    --#{$color-name}-invert: #{theme-get-color($color-name, true)};
+  }
+}

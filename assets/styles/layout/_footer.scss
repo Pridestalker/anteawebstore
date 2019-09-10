@@ -1,0 +1,26 @@
+// noinspection Stylelint
+footer.topper {
+  background: adjust-color(theme-get-color('primary'), $alpha: -0.7);
+  color: theme-get-color('primary');
+  text-transform: uppercase;
+  padding: get-spacing('md') 0;
+
+  .flex {
+    justify-content: space-around;
+  }
+}
+
+// noinspection Stylelint
+footer.footer {
+  background: theme-get-color('primary');
+  color: theme-get-color('white');
+  padding: get-spacing('md') 0;
+}
+
+
+.footer-menu-item {
+  display: block;
+  margin: get-spacing('md') 0;
+  color: $white;
+  text-decoration: none;
+}

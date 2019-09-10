@@ -1,0 +1,26 @@
+@import '~bourbon-neat/core/neat';
+
+$neat-grid: (
+  columns: $grid-columns,
+  gap: $grid-gap
+);
+
+.grid {
+  @include grid-container;
+
+  margin: 0 ($grid-gap * -1);
+
+  &.flow {
+    flex-wrap: wrap;
+  }
+}
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include grid-column($i);
+
+    @media screen and (max-width: 1024px) {
+      @include grid-column($grid-columns);
+    }
+  }
+}
