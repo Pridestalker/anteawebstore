@@ -1,0 +1,17 @@
+@mixin max-breakpoint($breakpoint) {
+  @media (max-width: #{$breakpoint}) {
+    @content;
+  }
+}
+
+@mixin min-breakpoint($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin between-breakpoint($breakpoint-1, $breakpoint-max) {
+  @media (min-width: $breakpoint-1) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}

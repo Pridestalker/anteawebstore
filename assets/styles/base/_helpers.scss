@@ -1,0 +1,63 @@
+@each $color, $value in $colors {
+  .text-#{$color} {
+    color: theme-get-color($color);
+  }
+
+  .text-#{$color}-invert {
+    color: theme-get-color($color, $inverted: true);
+  }
+
+  .text-#{$color}-force {
+    color: theme-get-color($color) !important;
+  }
+
+  .text-#{$color}-invert-force {
+    color: theme-get-color($color, $inverted: true) !important;
+  }
+
+  .bg-#{$color} {
+    background: theme-get-color($color);
+  }
+
+  .bg-#{$color}-force {
+    background: theme-get-color($color) !important;
+  }
+}
+
+@each $size, $val in $sizes {
+  .size-#{$size} {
+    width: unquote($val);
+  }
+}
+
+%is-flex {
+  display: flex;
+}
+
+.flex {
+  @extend %is-flex;
+}
+
+.align-center {
+  @extend %is-flex;
+  align-content: center;
+}
+
+.justify-center {
+  @extend %is-flex;
+  justify-content: center;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+mr-auto {
+  margin-right: auto;
+}
+
+hr {
+  color: adjust-color(#707070, $alpha: -0.9);
+  border-width: 1px;
+  border-bottom: 0;
+}

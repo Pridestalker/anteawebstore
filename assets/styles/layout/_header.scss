@@ -1,0 +1,30 @@
+$header-width: 100% !default;
+$header-background: 'primary' !default;
+$header-color: 'white' !default;
+$header-padding: get-spacing('md') 0 !default;
+$header-is-sticky: false !default;
+
+$logo-bar-background: 'white' !default;
+$logo-bar-color: 'primary' !default;
+$logo-bar-padding: #{get-spacing('md') + get-spacing('sm')} 0 !default;
+
+$nav-item-spacing: get-spacing('xl') !default;
+$nav-item-color: theme-get-color('primary') !default;
+$nav-item-color-hover: adjust-color(theme-get-color('primary'), $lightness: 20%) !default;
+
+$logo-bar-menu-spacing: $nav-item-spacing / 2 !default;
+
+$sf-input-default-hidden: true !default;
+$sf-button-color: theme-get-color('primary') !default;
+$sf-button-color-hover: adjust-color(theme-get-color('primary'), $lightness: 20%) !default;
+$sf-input-borders: (
+  'top': false,
+  'right': false,
+  'bottom': 1px solid theme-get-color('primary'),
+  'left': false
+) !default;
+$sf-input-padding: 0 8px !default;
+
+@import 'header/topper';
+@import 'header/navbar';
+@import 'header/searchform';

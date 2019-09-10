@@ -1,0 +1,37 @@
+{% if not _product %}
+    {% set _product = fn('wc_get_product', product.ID) %}
+{% endif %}
+
+<article class="product-card--vertical product-card">
+    <figure>
+        <a href="{{ product.link }}">
+            <img class="product-card--v--image" src="{{ product.thumbnail('medium') }}" alt="{{ product.thumbnail.alt?? product.title }}" />
+        </a>
+    </figure>
+    <main class="product-card--v--content">
+        <h3 class="product-card--v--title">
+            <a href="{{ product.link }}" title="Bekijk {{ product.title }}">
+                {{ product.title }}
+            </a>
+        </h3>
+        <p class="product-card--v--excerpt">
+            {{ product.excerpt }}
+        </p>
+        <p class="product-card--v--price">
+            v.a. &euro; {{ _product.get_price }}
+        </p>
+        <footer class="product-card--v--footer">
+            <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--v--more-info">
+                Meer informatie
+            </a>
+
+            <form class="js-add-to-cart-form product-card--v--add-to-cart-form ml-auto">
+                <input type="hidden" id="product_id" name="product_id" value="{{ product.ID }}" />
+                <input type="hidden" id="quantity" name="quantity" value="1" />
+                <button type="submit" class="product-card--add-to-cart product-card--v--add-to-cart">
+                    <i class="fas fa-shopping-cart"></i> Bestellen
+                </button>
+            </form>
+        </footer>
+    </main>
+</article>

@@ -10995,8 +10995,8 @@ return jQuery;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mitch\PhpStormProjects\anteagroupwebstore\wp-content\themes\webstore\assets\scripts\main.js */"./assets/scripts/main.js");
-module.exports = __webpack_require__(/*! C:\Users\mitch\PhpStormProjects\anteagroupwebstore\wp-content\themes\webstore\assets\styles\main.scss */"./assets/styles/main.scss");
+__webpack_require__(/*! /Users/mitch/OneDrive/DoedeJaarsmaCommunicatie/projects/Antea/Webstore/wp-content/themes/webstore/assets/scripts/main.js */"./assets/scripts/main.js");
+module.exports = __webpack_require__(/*! /Users/mitch/OneDrive/DoedeJaarsmaCommunicatie/projects/Antea/Webstore/wp-content/themes/webstore/assets/styles/main.scss */"./assets/styles/main.scss");
 
 
 /***/ })

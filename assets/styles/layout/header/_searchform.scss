@@ -1,0 +1,36 @@
+.search-form {
+  display: flex;
+}
+
+.search-form-input {
+  @extend %transitioning;
+  border: unset;
+
+  @each $border, $val in $sf-input-borders {
+    @if $val {
+      border-#{$border}: $val;
+    }
+  }
+
+  color: $primary;
+  padding: $sf-input-padding;
+
+  @if $sf-input-default-hidden {
+    display: none;
+
+    &.active {
+      display: inline-block;
+    }
+  }
+}
+
+.search-form-button {
+  @extend %transitioning;
+  all: unset;
+  color: $sf-button-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $sf-button-color-hover;
+  }
+}

@@ -1,0 +1,17 @@
+.content {
+  font-family: get-font('base'), serif;
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      margin-bottom: get-spacing('md');
+    }
+
+    p {
+      margin-bottom: get-spacing('sm');
+    }
+  }
+}
+
+html {
+  font-family: get-font('base'), serif;
+}
