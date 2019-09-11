@@ -1,0 +1,19 @@
+{% if image %}
+    {% set _img = Image(image) %}
+{% endif %}
+
+<a
+    class="cta-banner-wrapper"
+    href="{{ link.url }}"
+    {% if link.is_external %} target="_blank" {% endif %}
+    {% if link.nofollow %} rel="nofollow" {% endif %}
+>
+    <aside
+            class="cta-banner-background"
+            data-background="{{ _img.src('large') }}"
+            style="background-image: url('{{ _img.src('large') }}');" >
+        <div class="cta-banner-content">
+            {{ title }}
+        </div>
+    </aside>
+</a>

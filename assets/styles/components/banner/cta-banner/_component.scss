@@ -1,0 +1,42 @@
+.elementor-widget-banner,
+.elementor-widget-banner > .elementor-widget-container {
+  height: 100%;
+}
+
+.cta-banner-wrapper {
+  background: theme-get-color('primary');
+
+  @media screen and (min-width: map-get($screens, 'md')) {
+    height: 100%;
+    display: block;
+  }
+}
+
+.cta-banner-background {
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  will-change: transform;
+}
+
+.cta-banner-content {
+  background: theme-get-color('white');
+  color: theme-get-color('primary');
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: map-get($spacing, 'md');
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-weight: 600;
+
+
+  @media screen and (min-width: map-get($screens, 'md')) {
+    width: 40%;
+  }
+
+  &::first-line {
+    font-weight: 300;
+  }
+}

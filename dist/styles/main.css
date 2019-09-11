@@ -441,6 +441,153 @@ template {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.product-card--add-to-cart,
+.btn {
+  all: unset;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  color: rgba(0, 0, 0, 0.7);
+  background: white;
+  cursor: pointer;
+}
+
+.btn .primary {
+  color: rgba(0, 0, 0, 0.7);
+  background: #01597e;
+}
+
+.btn .primary-inverted {
+  color: #01597e;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.btn .primary-outlined {
+  color: #01597e;
+  border: 1px solid #01597e;
+  background: transparent;
+}
+
+.btn .secondary {
+  color: rgba(0, 0, 0, 0.7);
+  background: #dce4ea;
+}
+
+.btn .secondary-inverted {
+  color: #dce4ea;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.btn .secondary-outlined {
+  color: #dce4ea;
+  border: 1px solid #dce4ea;
+  background: transparent;
+}
+
+.btn .success {
+  color: rgba(0, 0, 0, 0.7);
+  background: #467b0a;
+}
+
+.btn .success-inverted {
+  color: #467b0a;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.btn .success-outlined {
+  color: #467b0a;
+  border: 1px solid #467b0a;
+  background: transparent;
+}
+
+.btn .white {
+  color: rgba(0, 0, 0, 0.7);
+  background: white;
+}
+
+.btn .white-inverted {
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.btn .white-outlined {
+  color: white;
+  border: 1px solid white;
+  background: transparent;
+}
+
+.btn .black {
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.btn .black-inverted {
+  color: rgba(0, 0, 0, 0.7);
+  background: white;
+}
+
+.btn .black-outlined {
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  background: transparent;
+}
+
+.product-card--add-to-cart {
+  color: white;
+  background: #467b0a;
+  text-transform: uppercase;
+  transition: background-color 355ms cubic-bezier(0.4, 1.25, 0.2, 1);
+}
+
+.product-card--add-to-cart:hover {
+  background: #6ec110;
+}
+
+.elementor-widget-banner,
+.elementor-widget-banner > .elementor-widget-container {
+  height: 100%;
+}
+
+.cta-banner-wrapper {
+  background: #01597e;
+}
+
+@media screen and (min-width: 768px) {
+  .cta-banner-wrapper {
+    height: 100%;
+    display: block;
+  }
+}
+
+.cta-banner-background {
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  will-change: transform;
+}
+
+.cta-banner-content {
+  background: white;
+  color: #01597e;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .cta-banner-content {
+    width: 40%;
+  }
+}
+
+.cta-banner-content::first-line {
+  font-weight: 300;
+}
+
 .text-primary {
   color: #01597e;
 }

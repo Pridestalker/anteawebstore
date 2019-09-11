@@ -1,0 +1,30 @@
+%btn {
+  all: unset;
+  border-radius: 0;
+  padding: get-spacing('sm') get-spacing('md');
+  color: theme-get-color('black');
+  background: theme-get-color('white');
+  cursor: pointer;
+}
+
+.btn {
+  @extend %btn;
+
+  @each $name, $map in $colors {
+    .#{$name} {
+      color: theme-get-color($name, 1);
+      background: theme-get-color($name);
+    }
+
+    .#{$name}-inverted {
+      color: theme-get-color($name);
+      background: theme-get-color($name, 1);
+    }
+
+    .#{$name}-outlined {
+      color: theme-get-color($name);
+      border: 1px solid theme-get-color($name);
+      background: transparent;
+    }
+  }
+}

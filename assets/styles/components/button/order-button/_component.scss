@@ -1,0 +1,12 @@
+.product-card--add-to-cart {
+  @extend %btn;
+  color: theme-get-color('white');
+  background: theme-get-color('success');
+  text-transform: uppercase;
+
+  transition: background-color 355ms cubic-bezier(0.4, 1.25, 0.2, 1);
+
+  &:hover {
+    background: adjust-color(theme-get-color('success'), $lightness: 15%);
+  }
+}
