@@ -1,0 +1,26 @@
+.product-price {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: get-spacing('lg') 0;
+  display: block
+}
+
+.product-status {
+  font-weight: 700;
+
+  &.available {
+    color: theme-get-color('success');
+  }
+}
+
+.add-to-cart-qty-input {
+  display: flex;
+  input {
+    appearance: textfield;
+    max-width: 2rem;
+    text-align: center;
+    border: 0;
+    border-top: 1px solid adjust-color(theme-get-color('black'), $alpha: -.6);
+    border-bottom: 1px solid adjust-color(theme-get-color('black'), $alpha: -.6);
+  }
+}

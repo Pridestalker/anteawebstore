@@ -268,6 +268,68 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./assets/scripts/routes/product/QuantityButtons.js":
+/*!**********************************************************!*\
+  !*** ./assets/scripts/routes/product/QuantityButtons.js ***!
+  \**********************************************************/
+/*! exports provided: QuantityButtonsHandler, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuantityButtonsHandler", function() { return QuantityButtonsHandler; });
+var QuantityButtonsHandler = function QuantityButtonsHandler() {
+  var addButton = document.querySelector(addSelector());
+  var subButton = document.querySelector(subSelector());
+  addSubEvent(subButton);
+  addAddEvent(addButton);
+};
+
+var addSubEvent = function addSubEvent(button) {
+  return button.addEventListener('click', subEvent);
+};
+
+var addAddEvent = function addAddEvent(button) {
+  return button.addEventListener('click', addEvent);
+};
+
+var subEvent = function subEvent(event) {
+  var input = getInput();
+
+  if (input.valueAsNumber > 1) {
+    input.value = input.valueAsNumber - 1;
+  } else {
+    event.target.disabled = true;
+  }
+};
+
+var addEvent = function addEvent(event) {
+  var input = getInput();
+  input.value = input.valueAsNumber + 1;
+  document.querySelector(subSelector()).disabled = false;
+};
+
+var inputSelector = function inputSelector() {
+  return '#quantity';
+};
+
+var subSelector = function subSelector() {
+  return '.js-btn-sub';
+};
+
+var addSelector = function addSelector() {
+  return '.js-btn-add';
+};
+
+var getInput = function getInput() {
+  return document.querySelector(inputSelector());
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (QuantityButtonsHandler);
+
+/***/ }),
+
 /***/ "./assets/scripts/routes/product/TabHandler.js":
 /*!*****************************************************!*\
   !*** ./assets/scripts/routes/product/TabHandler.js ***!
@@ -408,12 +470,15 @@ var formSelector = function formSelector() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_TabHandler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./product/TabHandler */ "./assets/scripts/routes/product/TabHandler.js");
 /* harmony import */ var _product_VariationHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product/VariationHandler */ "./assets/scripts/routes/product/VariationHandler.js");
+/* harmony import */ var _product_QuantityButtons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product/QuantityButtons */ "./assets/scripts/routes/product/QuantityButtons.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   init: function init() {
     Object(_product_TabHandler__WEBPACK_IMPORTED_MODULE_0__["default"])();
     Object(_product_VariationHandler__WEBPACK_IMPORTED_MODULE_1__["VariationHandler"])();
+    Object(_product_QuantityButtons__WEBPACK_IMPORTED_MODULE_2__["default"])();
   },
   finalize: function finalize() {}
 });

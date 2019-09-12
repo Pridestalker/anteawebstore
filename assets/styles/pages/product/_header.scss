@@ -1,0 +1,37 @@
+.product-header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 20vh;
+  position: relative;
+
+  @media screen and (min-width: 1024px) {
+    min-height: 400px;
+  }
+}
+
+.product-header__floater {
+  background: adjust-color(theme-get-color('primary'), $alpha: -0.2);
+  color: theme-get-color('white');
+  padding: get-spacing('lg');
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 33vw;
+}
+
+.product-header__category {
+  a {
+    color: theme-get-color('white');
+    font-size: 2rem;
+    font-weight: 200;
+    margin-bottom: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+.product-header__title {
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}

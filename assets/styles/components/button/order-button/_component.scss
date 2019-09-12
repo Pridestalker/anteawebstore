@@ -1,4 +1,4 @@
-.product-card--add-to-cart {
+%add-to-cart-button {
   @extend %btn;
   color: theme-get-color('white');
   background: theme-get-color('success');
@@ -9,4 +9,13 @@
   &:hover {
     background: adjust-color(theme-get-color('success'), $lightness: 15%);
   }
+}
+
+.product-card--add-to-cart {
+  @extend %add-to-cart-button;
+}
+
+.product-add-to-cart {
+  @extend %add-to-cart-button;
+  margin-left: 1rem;
 }

@@ -1,26 +1,44 @@
 <aside class="product-sidebar">
     <form method="GET" class="product-add-to-cart-form js-product-add-to-cart-form">
-        {% for key, attribute in attributes %}
-            {% do fn('wc_dropdown_variation_attribute_options', {
-                'options': attribute,
-                'attribute': key,
-                'product': product
-            })  %}
-        {% endfor %}
+        <section class="">
+            {% for key, attribute in attributes %}
+                Kies een {{ key|replace({'pa_': ''}) }}:
+                {% do fn('wc_dropdown_variation_attribute_options', {
+                    'options': attribute,
+                    'attribute': key,
+                    'product': product
+                })  %}
+            {% endfor %}
+        </section>
 
-        <span class="product-price" style="display: block">
+        <span class="product-price">
             <span class="product-price-number">{{ product.get_price_html }}</span>
         </span>
 
-        <input type="number" name="quantity" id="quantity" value="1" min="1" />
-        <input type="hidden" value="{{ post.ID }}" id="add-to-cart" name="add-to-cart">
-        <button type="submit" class="product-add-to-cart">
-            <i class="fas fa-shopping-cart"></i> bestellen
-        </button>
+        <div class="flex">
+            <section class="add-to-cart-qty-input">
+                <button type="button" class="js-btn-sub qty-btn qty-btn--left">-</button>
+                <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                <button type="button" class="js-btn-add qty-btn qty-btn--right">+</button>
+            </section>
+            <input type="hidden" value="{{ post.ID }}" id="product_id" name="product_id">
+            <button type="submit" class="product-add-to-cart">
+                <i class="fas fa-shopping-cart"></i> bestellen
+            </button>
+        </div>
     </form>
 
-
-    <span class="product-status available">Beschikbaar:</span> binnen 3 weken gerealiseerd
+    {% if product.is_in_stock %}
+        <p>
+            <span class="product-status available">
+                <span class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-check fa-stack-1x" style="color: #fff"></i>
+                </span>
+                Beschikbaar:
+            </span> binnen 3 weken gerealiseerd
+        </p>
+    {% endif %}
 
     <ol class="product-usp">
         <li>Voeg dit product toe aan uw bestelling</li>

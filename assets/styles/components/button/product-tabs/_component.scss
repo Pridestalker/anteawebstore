@@ -9,7 +9,7 @@
   cursor: pointer;
 
   padding: get-spacing('sm') get-spacing('md');
-  transition: border .5s cubic-bezier(0.2, 0.4, 0, 1);
+  transition: all 225ms cubic-bezier(0.2, 0.4, 0, 1);
 
   width: 100%;
   text-align: center;
@@ -22,10 +22,11 @@
 
 .product-content {
   display: none;
+  visibility: hidden;
   opacity: 0;
-  transition: border .5s cubic-bezier(0.2, 0.4, 0, 1);
-
+  transition: opacity 1s cubic-bezier(0.2, 0.4, 0, 1);
   &--active {
+    visibility: visible;
     display: block;
     opacity: 1;
   }
