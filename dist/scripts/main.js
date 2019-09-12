@@ -100,13 +100,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tools_Router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tools/Router */ "./assets/scripts/tools/Router.js");
 /* harmony import */ var _routes_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes/common */ "./assets/scripts/routes/common.js");
 /* harmony import */ var _routes_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes/home */ "./assets/scripts/routes/home.js");
+/* harmony import */ var _routes_singleProduct__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes/singleProduct */ "./assets/scripts/routes/singleProduct.js");
+
 
 
 
 
 var routes = new _tools_Router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   common: _routes_common__WEBPACK_IMPORTED_MODULE_2__["default"],
-  home: _routes_home__WEBPACK_IMPORTED_MODULE_3__["default"]
+  home: _routes_home__WEBPACK_IMPORTED_MODULE_3__["default"],
+  singleProduct: _routes_singleProduct__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 window.routes = routes;
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
@@ -261,6 +264,158 @@ __webpack_require__.r(__webpack_exports__);
   },
   finalize: function finalize() {// Javascript that fires on home. after page specific JS is fires.
   }
+});
+
+/***/ }),
+
+/***/ "./assets/scripts/routes/product/TabHandler.js":
+/*!*****************************************************!*\
+  !*** ./assets/scripts/routes/product/TabHandler.js ***!
+  \*****************************************************/
+/*! exports provided: tabular, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tabular", function() { return tabular; });
+var tabular = function tabular() {
+  var tabs = getAllTabs();
+  var contents = getAllContents();
+
+  var _loop = function _loop(i) {
+    tabs[i].addEventListener('click', function () {
+      resetAll(tabs);
+      resetContents(contents);
+      setClass(tabs[i]);
+      toggleContent(tabs[i]);
+    });
+  };
+
+  for (var i = 0; i < tabs.length; i++) {
+    _loop(i);
+  }
+};
+
+var resetAll = function resetAll(tabs) {
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove(activeClass());
+  }
+};
+
+var setClass = function setClass(tab) {
+  tab.classList.add(activeClass());
+};
+
+var toggleContent = function toggleContent(tab) {
+  var target = document.querySelector(tab.dataset.target);
+  target.classList.add(contentActive());
+};
+
+var resetContents = function resetContents(contents) {
+  for (var i = 0; i < contents.length; i++) {
+    contents[i].classList.remove(contentActive());
+  }
+};
+
+var getAllTabs = function getAllTabs() {
+  return document.querySelectorAll(tabSelector());
+};
+
+var getAllContents = function getAllContents() {
+  return document.querySelectorAll(contentSelector());
+};
+
+var contentSelector = function contentSelector() {
+  return '.product-content';
+};
+
+var contentActive = function contentActive() {
+  return 'product-content--active';
+};
+
+var tabSelector = function tabSelector() {
+  return '.js-product-tab';
+};
+
+var activeClass = function activeClass() {
+  return 'product-tabs--active';
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (tabular);
+
+/***/ }),
+
+/***/ "./assets/scripts/routes/product/VariationHandler.js":
+/*!***********************************************************!*\
+  !*** ./assets/scripts/routes/product/VariationHandler.js ***!
+  \***********************************************************/
+/*! exports provided: VariationHandler */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VariationHandler", function() { return VariationHandler; });
+var VariationHandler = function VariationHandler() {
+  var form = document.querySelector(formSelector());
+  var selects = form.querySelectorAll(switchSelector());
+
+  var _loop = function _loop(i) {
+    var el = selects[i];
+    el.addEventListener('input', function (ev) {
+      var attribute = el.dataset.attribute_name;
+      var value = ev.target.value;
+      urlSwitcher(attribute, value);
+    });
+  };
+
+  for (var i = 0; i < selects.length; i++) {
+    _loop(i);
+  }
+};
+
+var urlSwitcher = function urlSwitcher(attr, val) {
+  var qp = new URLSearchParams(window.location.search);
+
+  if (qp.get(attr) === val) {
+    return;
+  }
+
+  qp.set(attr, val);
+  window.location.search = qp.toString();
+};
+
+var switchSelector = function switchSelector() {
+  return '[data-attribute_name]';
+};
+
+var formSelector = function formSelector() {
+  return '.product-add-to-cart-form';
+};
+
+
+
+/***/ }),
+
+/***/ "./assets/scripts/routes/singleProduct.js":
+/*!************************************************!*\
+  !*** ./assets/scripts/routes/singleProduct.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _product_TabHandler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./product/TabHandler */ "./assets/scripts/routes/product/TabHandler.js");
+/* harmony import */ var _product_VariationHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product/VariationHandler */ "./assets/scripts/routes/product/VariationHandler.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  init: function init() {
+    Object(_product_TabHandler__WEBPACK_IMPORTED_MODULE_0__["default"])();
+    Object(_product_VariationHandler__WEBPACK_IMPORTED_MODULE_1__["VariationHandler"])();
+  },
+  finalize: function finalize() {}
 });
 
 /***/ }),

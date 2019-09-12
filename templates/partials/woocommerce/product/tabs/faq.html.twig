@@ -1,0 +1,12 @@
+<div class="product-content" id="faq">
+    <h3>Veelgestelde vragen</h3>
+
+    {% for item in post.get_field('faq') %}
+        <h4 class="faq-question mb-0 mb-none">
+            {{ item.question }}
+        </h4>
+        <p class="faq-answer">
+            {{ item.answer }}
+        </p>
+    {% endfor %}
+</div>

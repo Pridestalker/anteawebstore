@@ -3,10 +3,13 @@ import jQuery from 'jquery';
 import Router from './tools/Router';
 import common from './routes/common';
 import home from './routes/home';
+import singleProduct from './routes/singleProduct';
+
 
 const routes = new Router({
     common,
-    home
+    home,
+    singleProduct
 });
 
 window.routes = routes;

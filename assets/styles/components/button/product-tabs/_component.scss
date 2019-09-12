@@ -1,0 +1,32 @@
+.product-tabs-container {
+  display: flex;
+}
+
+.product-tabs {
+  all: unset;
+  border-bottom: 1px solid theme-get-color('secondary');
+  color: theme-get-color('primary');
+  cursor: pointer;
+
+  padding: get-spacing('sm') get-spacing('md');
+  transition: border .5s cubic-bezier(0.2, 0.4, 0, 1);
+
+  width: 100%;
+  text-align: center;
+
+  &--active {
+    border: 1px solid theme-get-color('secondary');
+    border-bottom: none;
+  }
+}
+
+.product-content {
+  display: none;
+  opacity: 0;
+  transition: border .5s cubic-bezier(0.2, 0.4, 0, 1);
+
+  &--active {
+    display: block;
+    opacity: 1;
+  }
+}

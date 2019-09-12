@@ -1,0 +1,22 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    {% do action('woocommerce_before_single_product') %}
+
+    {{ include('partials/woocommerce/product/header.html.twig') }}
+
+    <div class="container auto product">
+        <main class="grid">
+            <section class="col-9 content">
+                {{ include('partials/woocommerce/product/tabs.html.twig') }}
+            </section>
+            <div class="col-3">
+                {{ include('partials/woocommerce/product/sidebar.html.twig') }}
+            </div>
+        </main>
+
+        {{ include('partials/woocommerce/product/related.html.twig') }}
+    </div>
+
+    {% do action('woocommerce_after_single_product') %}
+{% endblock %}

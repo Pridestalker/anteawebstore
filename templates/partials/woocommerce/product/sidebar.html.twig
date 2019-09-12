@@ -1,0 +1,27 @@
+<aside class="product-sidebar">
+    <select>
+        <option>Basis</option>
+        <option>Gevorderd</option>
+    </select>
+
+    <span class="product-price" style="display: block">
+        Vanaf: <span class="product-price-number">&euro; {{ product.get_price }}</span>
+    </span>
+
+    <form method="GET" class="product-add-to-cart-form">
+        <input type="number" name="quantity" id="quantity" value="1" min="1" />
+        <input type="hidden" value="{{ post.ID }}" id="add-to-cart" name="add-to-cart">
+        <button type="submit" class="product-add-to-cart">
+            <i class="fas fa-shopping-cart"></i> bestellen
+        </button>
+    </form>
+
+
+    <span class="product-status available">Beschikbaar:</span> binnen 3 weken gerealiseerd
+
+    <ol class="product-usp">
+        <li>Voeg dit product toe aan uw bestelling</li>
+        <li>Geef uw wensen op tijdens het afrekenen</li>
+        <li>Onze adviseurs nemen contact met u op voor een afspraak</li>
+    </ol>
+</aside>

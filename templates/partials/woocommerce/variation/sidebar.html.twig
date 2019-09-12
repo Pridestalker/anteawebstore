@@ -1,0 +1,31 @@
+<aside class="product-sidebar">
+    <form method="GET" class="product-add-to-cart-form js-product-add-to-cart-form">
+        {% for key, attribute in attributes %}
+            {% do fn('wc_dropdown_variation_attribute_options', {
+                'options': attribute,
+                'attribute': key,
+                'product': product
+            })  %}
+        {% endfor %}
+
+        <span class="product-price" style="display: block">
+            <span class="product-price-number">{{ product.get_price_html }}</span>
+        </span>
+
+        <input type="number" name="quantity" id="quantity" value="1" min="1" />
+        <input type="hidden" value="{{ post.ID }}" id="add-to-cart" name="add-to-cart">
+        <button type="submit" class="product-add-to-cart">
+            <i class="fas fa-shopping-cart"></i> bestellen
+        </button>
+    </form>
+
+
+    <span class="product-status available">Beschikbaar:</span> binnen 3 weken gerealiseerd
+
+    <ol class="product-usp">
+        <li>Voeg dit product toe aan uw bestelling</li>
+        <li>Geef uw wensen op tijdens het afrekenen</li>
+        <li>Onze adviseurs nemen contact met u op voor een afspraak</li>
+    </ol>
+</aside>
+
