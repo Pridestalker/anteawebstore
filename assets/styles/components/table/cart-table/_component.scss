@@ -1,0 +1,11 @@
+.table--cart {
+  width: 100%;
+}
+
+.table-header--cart {
+  background-color: theme-get-color('secondary');
+
+  th {
+    padding: 1rem 0;
+  }
+}

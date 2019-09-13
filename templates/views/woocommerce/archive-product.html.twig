@@ -1,0 +1,17 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    <div class="container auto products">
+        <h1 class="page-title">{{ title }}</h1>
+        <main class="grid">
+            <div class="col-3">
+                <!-- FILTER HERE -->
+            </div>
+            <section class="col-9">
+                {% for product in products %}
+                    {{ include('partials/tease/product-horizontal.html.twig', { product: product }, with_context = false) }}
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+{% endblock %}

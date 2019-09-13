@@ -1,0 +1,24 @@
+$tabs-product-borderwidth: 1px !default;
+$tabs-product-borderstyle: solid !default;
+$tabs-product-bordercolor: theme-get-color('secondary') !default;
+$tabs-product-borders: (
+  'top': false,
+  'right': false,
+  'bottom': true,
+  'left': false
+);
+
+$tabs-product-color: theme-get-color('secondary') !default;
+$tabs-product-padding: get-spacing('sm') get-spacing('md') !default;
+
+$tabs-product-borderwidth--active: $tabs-product-borderwidth !default;
+$tabs-product-borderstyle--active: $tabs-product-borderstyle !default;
+$tabs-product-bordercolor--active: $tabs-product-bordercolor !default;
+$tabs-product-borders--active: (
+    'top': true,
+    'right': true,
+    'bottom': false,
+    'left': true
+);
+
+$tabs-product-color--active: theme-get-color('primary') !default;

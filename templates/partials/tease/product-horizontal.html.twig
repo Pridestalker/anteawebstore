@@ -1,0 +1,60 @@
+{% if not _product %}
+    {% set _product = fn('wc_get_product', product.ID) %}
+{% endif %}
+
+<article class="product-card product-card--horizontal">
+    <figure class="product-card--h--image-wrapper">
+        <a href="{{ _product.get_permalink }}" title="{{ product.title }}">
+            <img class="product-card--h--image" src="{{ product.thumbnail('medium') }}" alt="{{ product.thumbnail.alt?? product.title }}" />
+        </a>
+    </figure>
+
+    <main class="product-card--h--content">
+        <small class="product-card--h--category">
+            Ruimte en water
+        </small>
+        <h3 class="product-card--h--title">
+            <a href="{{ product.link }}" title="Bekijk {{ product.title }}">
+                {{ product.title }}
+            </a>
+        </h3>
+        <small>
+            {% for attribute in _product.get_attributes %}
+                {% if attribute.get_visible %}
+                    {% set _attributes = fn('get_the_terms', post.ID, attribute.get_name) %}
+                    <span class="product-card--h--product-attributes product-attributes_{{ attribute.get_name|replace({'pa_': ''}) }}">
+                        {% for _attribute in _attributes %}
+                            <span data-attribute="{{ attribute.get_name|replace({'pa_': ''}) }}" data-value="{{ _attribute.slug }}">{{ _attribute.name }}{% if not loop.last %}, {% endif %}</span>
+                        {% endfor %}
+                    </span>
+                    {% if not loop.last %}<span class="product-card--h--sep">|</span>{% endif %}
+                {% endif %}
+            {% endfor %}
+        </small>
+        <aside class="product-card--h--reviews"><!-- Sterren --></aside>
+        <section>
+            <p>
+                {{ post.excerpt }}
+            </p>
+            <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--h--more-info">
+                Meer informatie
+            </a>
+        </section>
+    </main>
+
+    <aside class="product-card--h--sidebar">
+        <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--h--price">
+            {{ _product.get_price_html }}
+        </a>
+        <span class="product-card--h--availability">
+            <i class="fas fa-check"></i> Beschikbaar
+        </span>
+        <form class="js-add-to-cart-form product-card--h--add-to-cart-form">
+            <input type="hidden" id="product_id" name="product_id" value="{{ product.ID }}" />
+            <input type="hidden" id="quantity" name="quantity" value="1" />
+            <button type="submit" class="product-card--add-to-cart product-card--h--add-to-cart">
+                <i class="fas fa-shopping-cart"></i> Bestellen
+            </button>
+        </form>
+    </aside>
+</article>

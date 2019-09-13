@@ -4,7 +4,7 @@
 }
 
 .cta-banner-wrapper {
-  background: theme-get-color('primary');
+  background: $cta-banner-wrapper-background;
 
   @media screen and (min-width: map-get($screens, 'md')) {
     height: 100%;
@@ -21,22 +21,24 @@
 }
 
 .cta-banner-content {
-  background: theme-get-color('white');
-  color: theme-get-color('primary');
+  background: $cta-banner-content-background;
+  color: $cta-banner-content-color;
   text-transform: uppercase;
   width: 100%;
-  font-size: 1.5rem;
-  padding: map-get($spacing, 'md');
-  line-height: 1.5;
-  margin-bottom: 2rem;
-  font-weight: 600;
+  font-size: $cta-banner-content-fontsize;
+  padding: $cta-banner-content-padding;
+  line-height: $cta-banner-content-lineheight;
+  margin: $cta-banner-content-margin;
+  font-weight: $cta-banner-content-fontweight;
 
 
   @media screen and (min-width: map-get($screens, 'md')) {
-    width: 40%;
+    width: $cta-banner-content-width;
   }
 
-  &::first-line {
-    font-weight: 300;
+  @if $cta-banner-content-firstline {
+    &::first-line {
+      font-weight: 300;
+    }
   }
 }

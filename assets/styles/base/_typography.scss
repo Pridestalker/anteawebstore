@@ -15,3 +15,11 @@
 html {
   font-family: get-font('base'), serif;
 }
+
+.page-title {
+  color: theme-get-color('primary');
+  text-decoration: underline dotted;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-underline-offset: .5rem;
+}

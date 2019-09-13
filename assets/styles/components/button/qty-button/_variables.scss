@@ -1,0 +1,9 @@
+$button-qty-color: theme-get-color('black') !default;
+$button-qty-borderwidth: 1px !default;
+$button-qty-borderstyle: solid !default;
+$button-qty-bordercolor: adjust-color(theme-get-color('black'), $alpha: -.6) !default;
+
+$button-qty-borderwidth--disabled: $button-qty-borderwidth !default;
+$button-qty-borderstyle--disabled: $button-qty-borderstyle !default;
+$button-qty-bordercolor--disabled: adjust-color(theme-get-color('black'), $alpha: -.4) !default;
+

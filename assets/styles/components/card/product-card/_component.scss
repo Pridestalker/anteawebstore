@@ -1,36 +1,39 @@
 .product-card--vertical {
-  background: theme-get-color('secondary');
+  background: $card-product-v-background;
 }
 
 .product-card--v--content {
   padding: get-spacing();
-  color: theme-get-color('black');
+  color: $card-product-v-content-color;
 }
 
 .product-card--v--title {
-  margin-top: 0;
-  font-size: 20px;
+  margin: $card-product-v-content-title-margin;
+  font-size: $card-product-v-content-title-fontsize;
   a {
-    color: theme-get-color('black');
+    color: $card-product-v-content-title-link-color;
   }
 }
 
 .product-card--v--price {
-  font-weight: 600;
-  color: theme-get-color('primary');
-  font-size: 20px;
-  margin-bottom: 0.5rem;
+  font-weight: $card-product-v-content-price-fontweight;
+  color: $card-product-v-content-price-color;
+  font-size: $card-product-v-content-price-fontsize;
+  margin: $card-product-v-content-price-margin;
   display: block;
 }
 
 .product-card--v--footer {
   display: flex;
+  align-items: center;
 
-  .product-card--v--more-info {
-    text-decoration: underline;
+  @if $card-product-v-content-info-underline {
+    .product-card--v--more-info {
+      text-decoration: underline;
+    }
   }
 }
 
 .product-card--v--more-info {
-  color: theme-get-color('black');
+  color: $card-product-v-content-info-color;
 }

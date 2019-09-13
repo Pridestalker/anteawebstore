@@ -1,0 +1,45 @@
+{% do action('woocommerce_before_cart') %}
+
+<div class="container auto">
+    <h1 class="page-title">
+        Winkelwagen
+    </h1>
+
+    <form action="{{ cart_url }}">
+        {% do action('woocommerce_before_cart_table') %}
+        <table class="table--cart table">
+            <thead class="table-header table-header--cart">
+                <tr>
+                    <!-- Delete product -->
+                    <th>&nbsp;</th>
+                    <!-- Thumbnail product -->
+                    <th>&nbsp;</th>
+                    <th>Product</th>
+                    <th>Prijs</th>
+                    <th>Aantal</th>
+                    <th>Totaal</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for key, product in cart_items %}
+                <tr>
+                    <td class="cart-delete">
+                        <span class="fa-stack fa-xs">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-times fa-stack-1x"></i>
+                        </span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% do action('woocommerce_after_cart_table') %}
+    </form>
+</div>
+
+{% do action('woocommerce_before_cart_collaterals') %}
+
+<div class="container auto">
+    {% do action('woocommerce_cart_collaterals') %}
+</div>
+{% do action('woocommerce_after_cart') %}

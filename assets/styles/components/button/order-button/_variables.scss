@@ -1,0 +1,5 @@
+$button-atc-color: theme-get-color('white') !default;
+$button-atc-background: theme-get-color('success') !default;
+$button-atc-uppercase: true !default;
+$button-atc-color--hover: adjust-color(theme-get-color('success'), $lightness: 15%) !default;
+

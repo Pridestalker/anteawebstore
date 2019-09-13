@@ -1,0 +1,11 @@
+$cta-banner-wrapper-background: theme-get-color('primary') !default;
+/// Content variables
+$cta-banner-content-background: theme-get-color('white') !default;
+$cta-banner-content-color: theme-get-color('primary') !default;
+$cta-banner-content-fontsize: 1.5rem !default;
+$cta-banner-content-padding: map-get($spacing, 'md') !default;
+$cta-banner-content-lineheight: 1.5 !default;
+$cta-banner-content-margin: 0 0 2rem !default;
+$cta-banner-content-fontweight: 600 !default;
+$cta-banner-content-width: 40% !default;
+$cta-banner-content-firstline: true !default;

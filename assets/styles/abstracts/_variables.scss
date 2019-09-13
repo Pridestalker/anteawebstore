@@ -11,7 +11,7 @@ $succes-invert: find-color-invert($success) !default;
 $white: hsla(0, 100%, 100%, 1) !default;
 $white-invert: find-color-invert($white) !default;
 
-$black: hsla(0, 0%, 0%, 0.7) !default;
+$black: hsla(0, 0%, 0%, 1) !default;
 $black-invert: find-color-invert($black) !default;
 
 $colors: () !default;

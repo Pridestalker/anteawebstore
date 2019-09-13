@@ -4,7 +4,7 @@
     <div class="grid">
         {% for related in related_products %}
             <div class="col-4">
-                {{ include('partials/tease/product-vertical.html.twig', { post: related}, with_context = false) }}
+                {{ include('partials/tease/product-vertical.html.twig', { product: related }, with_context = false) }}
             </div>
         {% endfor %}
     </div>

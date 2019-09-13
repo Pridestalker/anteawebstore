@@ -1,9 +1,9 @@
 %btn {
   all: unset;
-  border-radius: 0;
-  padding: get-spacing('sm') get-spacing('md');
-  color: theme-get-color('black');
-  background: theme-get-color('white');
+  border-radius: $btn-default-radius;
+  padding: $btn-default-padding;
+  color: $btn-default-color;
+  background: $btn-default-background;
   cursor: pointer;
 }
 
