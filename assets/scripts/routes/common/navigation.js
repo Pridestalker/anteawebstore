@@ -55,19 +55,19 @@ const _addEvents = ({element, event, target}) => {
         }
     });
 
-    if (event === 'mouseover') {
-        element.addEventListener('mouseout', function () {
-            if (el.length === 0) {
-                return;
-            }
+if (event === 'mouseover') {
+    element.addEventListener('mouseout', function () {
+        if (el.length === 0) {
+            return;
+        }
 
-            el.classList.remove(...elClasses);
+        el.classList.remove(...elClasses);
 
-            document.body.classList.remove(
-                ...bodyClasses
-            );
-        });
-    }
+        document.body.classList.remove(
+            ...bodyClasses
+        );
+    });
+}
 };
 
 

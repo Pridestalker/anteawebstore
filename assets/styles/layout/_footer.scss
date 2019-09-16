@@ -7,6 +7,11 @@ footer.topper {
 
   .flex {
     justify-content: space-around;
+
+    @media screen and (max-width: map-get($screens, 'md')) {
+      padding: 0 1rem;
+      flex-direction: column;
+    }
   }
 }
 

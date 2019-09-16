@@ -1,5 +1,9 @@
 .search-form {
   display: flex;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: none;
+  }
 }
 
 .search-form-input {

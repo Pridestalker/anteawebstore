@@ -4,7 +4,10 @@
     <section class="container auto flex size-full">
         {% include 'partials/header/logo.html.twig' %}
 
-        <section class="ml-auto flex">
+        <button class="menu-toggle" data-action="nav-handler" data-event="click" data-target=".nav-wrapper">
+            <i class="fas fa-bars"></i>
+        </button>
+        <section class="ml-auto flex nav-wrapper">
             {% include 'partials/header/menu.html.twig' %}
         </section>
     </section>

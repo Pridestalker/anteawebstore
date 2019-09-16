@@ -1,0 +1,26 @@
+$ctable-width: 80% !default;
+$ctable-textalign: center !default;
+$ctable-padding: 1rem 0 !default;
+$ctable-background: false !default;
+$ctable-border: 1px solid theme-get-color('secondary') !default;
+/// table header
+$ctable-background--header: theme-get-color('secondary') !default;
+$ctable-border--header: false !default;
+$ctable-padding--header: $ctable-padding !default;
+/// table body
+$ctable-background--body: $ctable-background !default;
+$ctable-padding--body: $ctable-padding !default;
+$ctable-border--body: $ctable-border !default;
+/// table footer
+$ctable-background--footer: $ctable-background !default;
+$ctable-border--footer: $ctable-border !default;
+$ctable-padding--footer: $ctable-padding !default;
+/// table components
+$ctable-delete-color--circle: red !default;
+$ctable-delete-color--times: theme-get-color('white') !default;
+$ctable-width--thumbnail: 55px !default;
+$ctable-height--thumbnail: $ctable-width--thumbnail !default;
+$ctable-fontweight--title: 600 !default;
+$ctable-color--price: theme-get-color('primary') !default;
+$ctable-color--totals: theme-get-color('primary') !default;
+$ctable-fontweight--totals: 700 !default;

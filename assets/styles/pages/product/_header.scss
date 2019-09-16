@@ -35,3 +35,14 @@
   font-weight: 700;
   text-transform: uppercase;
 }
+
+
+@media screen and (max-width: map-get($screens, 'md')) {
+  .product-header {
+    min-height: 50vh;
+  }
+
+  .product-header__floater {
+    width: 100%;
+  }
+}

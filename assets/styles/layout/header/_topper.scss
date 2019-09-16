@@ -15,6 +15,10 @@
       top: $WP_ADMIN_BAR_HEIGHT;
     }
   }
+  @media screen and (max-width: map-get($screens, 'md')) {
+    padding: get-spacing('md') 1rem;
+    max-width: calc(100vw - 2rem);
+  }
 }
 
 .top-navigation-item {
@@ -29,5 +33,17 @@
 
   &:hover {
     color: mix(theme-get-color($header-color), $nav-item-color-hover);
+  }
+}
+
+.header-usp {
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: none;
+  }
+}
+
+.top-navigation {
+  @media screen and (max-width: map-get($screens, 'md')) {
+    margin-left: 0;
   }
 }

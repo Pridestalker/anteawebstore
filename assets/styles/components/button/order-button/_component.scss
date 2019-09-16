@@ -22,3 +22,8 @@
   @extend %add-to-cart-button;
   margin-left: 1rem;
 }
+
+.cart-proceed-to-checkout {
+  @extend %add-to-cart-button;
+  margin-left: auto;
+}

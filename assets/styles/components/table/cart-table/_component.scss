@@ -1,11 +1,68 @@
 .table--cart {
-  width: 100%;
+  width: $ctable-width;
+  border-collapse: collapse;
+  text-align: $ctable-textalign;
 }
 
 .table-header--cart {
-  background-color: theme-get-color('secondary');
+  background-color: $ctable-background--header;
 
   th {
-    padding: 1rem 0;
+    padding: $ctable-padding--header;
+    @if $ctable-border--header {
+      border: $ctable-border--header;
+    }
   }
+}
+
+.table-body--cart {
+  @if $ctable-background--body {
+    background-color: $ctable-background--body;
+  }
+  td {
+    padding: $ctable-padding--body;
+    @if $ctable-border--body {
+      border: $ctable-border--body;
+    }
+  }
+}
+
+.table-footer--cart {
+  @if $ctable-background--footer {
+    background-color: $ctable-background--footer;
+  }
+
+  @if $ctable-border--footer {
+    border: $ctable-border--footer;
+  }
+
+  td {
+    padding: $ctable-padding--footer;
+  }
+}
+
+.cart-delete--circle {
+  color: $ctable-delete-color--circle;
+}
+
+.cart-delete--times {
+  color: $ctable-delete-color--times;
+}
+
+.cart-thumbnail--image {
+  width: $ctable-width--thumbnail;
+  height: $ctable-height--thumbnail;
+}
+
+.cart-title {
+  font-weight: $ctable-fontweight--title;
+}
+
+.cart-price {
+  color: $ctable-color--price;
+}
+
+.cart-totals {
+  color: $ctable-color--totals;
+  font-weight: $ctable-fontweight--totals;
 }

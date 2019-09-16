@@ -1,5 +1,9 @@
 .product-tabs-container {
   display: flex;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    overflow-x: scroll;
+  }
 }
 
 .product-tabs {

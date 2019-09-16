@@ -32,4 +32,8 @@ h4.product-title {
     color: theme-get-color('primary');
     font-weight: 400;
   }
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    padding: 0 1rem;
+  }
 }

@@ -20,18 +20,67 @@
                     <th>Totaal</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-body table-body--cart">
             {% for key, product in cart_items %}
+                {% set _product = fn('wc_get_product', product.product_id) %}
+                {% set _thumb = Image(_product.get_image_id) %}
                 <tr>
                     <td class="cart-delete">
-                        <span class="fa-stack fa-xs">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fas fa-times fa-stack-1x"></i>
-                        </span>
+                        <a href="{{ fn('wc_get_cart_remove_url', key) }}"
+                           class="fa-stack fa-xs" data-product_id="{{ _product.get_id }}"
+                            data-product_sku="{{ _product.get_sku }}">
+                            <i class="fas fa-circle fa-stack-2x cart-delete--circle"></i>
+                            <i class="fas fa-times fa-stack-1x cart-delete--times"></i>
+                        </a>
+                    </td>
+
+                    <td class="cart-thumbnail">
+                        <img src="{{ _thumb.src('thumbnail') }}" alt="{{ _product.get_name }}" class="cart-thumbnail--image">
+                    </td>
+
+                    <td class="cart-title">
+                        {{ product.data.get_name }}
+                    </td>
+
+                    <td class="cart-price cart-price--single">
+                        {{ cart.get_product_price(_product) }}
+                    </td>
+
+                    <td>
+                        {{
+                            fn(
+                                'woocommerce_quantity_input',
+                                {
+                                    'input_name': 'cart[' ~ key ~ '][qty]',
+                                    'input_value': product.quantity,
+                                    'max_value': _product.get_max_purchase_quantity,
+                                    'min_value': 0,
+                                    'product_name': _product.get_name
+                                },
+                                _product,
+                                false
+                            )
+                        }}
+                    </td>
+
+                    <td class="cart-price cart-price--subtotal">
+                        {{ cart.get_product_subtotal(_product, product.quantity) }}
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
+            <tfoot>
+            <tr class="table-footer--cart">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="cart-totals">
+                    {{ fn('wc_cart_totals_order_total_html') }}
+                </td>
+            </tr>
+            </tfoot>
         </table>
         {% do action('woocommerce_after_cart_table') %}
     </form>
@@ -40,6 +89,10 @@
 {% do action('woocommerce_before_cart_collaterals') %}
 
 <div class="container auto">
-    {% do action('woocommerce_cart_collaterals') %}
+    <section class="flex cart-container--button">
+        <a href="{{ fn('wc_get_checkout_url') }}" class="cart-proceed-to-checkout">
+            afrekenen
+        </a>
+    </section>
 </div>
 {% do action('woocommerce_after_cart') %}

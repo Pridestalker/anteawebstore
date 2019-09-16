@@ -1,0 +1,39 @@
+<main>
+    {% do action('woocommerce_before_checkout_form', checkout) %}
+
+    <form action="{{ fn('wc_get_checkout_url') }}" method="POST" name="checkout" class="form-checkout">
+        {% if checkout.get_checkout_fields %}
+            <div class="container auto">
+
+                <div class="grid">
+                    <div class="col-6">
+                        <h2 class="page-title">
+                            Gegevens
+                        </h2>
+                        {% do action('woocommerce_checkout_before_customer_details') %}
+                        {% do action('woocommerce_checkout_billing') %}
+                        {% do action('woocommerce_checkout_after_customer_details') %}
+                    </div>
+                    <div class="col-6">
+                        <h2 class="page-title">
+                            Besteloverzicht
+                        </h2>
+                        {% do fn('woocommerce_order_review') %}
+                        {% do fn('woocommerce_checkout_coupon_form') %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="container auto">
+            <h2 class="page-title">
+                Betaalgegevens
+            </h2>
+            <div class="grid">
+                <section class="col-4">
+                    {% do fn('woocommerce_checkout_payment') %}
+                </section>
+            </div>
+        </div>
+    </form>
+</main>
