@@ -1,7 +1,7 @@
 {% do action('woocommerce_before_cart') %}
 
 <div class="container auto">
-    <h1 class="page-title">
+    <h1 class="page-title mobile-padded">
         Winkelwagen
     </h1>
 
@@ -24,8 +24,8 @@
             {% for key, product in cart_items %}
                 {% set _product = fn('wc_get_product', product.product_id) %}
                 {% set _thumb = Image(_product.get_image_id) %}
-                <tr>
-                    <td class="cart-delete">
+                <tr class="table-row--cart table-row">
+                    <td class="cart-delete" data-title="{{ __('Remove', 'woocommerce') }}">
                         <a href="{{ fn('wc_get_cart_remove_url', key) }}"
                            class="fa-stack fa-xs" data-product_id="{{ _product.get_id }}"
                             data-product_sku="{{ _product.get_sku }}">
@@ -38,15 +38,15 @@
                         <img src="{{ _thumb.src('thumbnail') }}" alt="{{ _product.get_name }}" class="cart-thumbnail--image">
                     </td>
 
-                    <td class="cart-title">
+                    <td class="cart-title" data-title="{{ __('Product', 'woocommerce') }}">
                         {{ product.data.get_name }}
                     </td>
 
-                    <td class="cart-price cart-price--single">
+                    <td class="cart-price cart-price--single" data-title="{{ __('Price', 'woocommerce') }}">
                         {{ cart.get_product_price(_product) }}
                     </td>
 
-                    <td>
+                    <td data-title="{{ __('Quantity', 'woocommerce') }}" class="cart-qty">
                         {{
                             fn(
                                 'woocommerce_quantity_input',
@@ -63,7 +63,7 @@
                         }}
                     </td>
 
-                    <td class="cart-price cart-price--subtotal">
+                    <td class="cart-price cart-price--subtotal" data-title="{{ __('Subtotal', 'woocommerce') }}">
                         {{ cart.get_product_subtotal(_product, product.quantity) }}
                     </td>
                 </tr>
@@ -76,7 +76,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class="cart-totals">
+                <td class="cart-totals" data-title="{{ __('Total', 'woocommerce') }}">
                     {{ fn('wc_cart_totals_order_total_html') }}
                 </td>
             </tr>
@@ -89,7 +89,7 @@
 {% do action('woocommerce_before_cart_collaterals') %}
 
 <div class="container auto">
-    <section class="flex cart-container--button">
+    <section class="cart-container--button">
         <a href="{{ fn('wc_get_checkout_url') }}" class="cart-proceed-to-checkout">
             afrekenen
         </a>

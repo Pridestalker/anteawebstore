@@ -25,13 +25,19 @@
                 Meer informatie
             </a>
 
-            <form class="js-add-to-cart-form product-card--v--add-to-cart-form ml-auto">
-                <input type="hidden" id="product_id" name="product_id" value="{{ product.ID }}" />
-                <input type="hidden" id="quantity" name="quantity" value="1" />
-                <button type="submit" class="product-card--add-to-cart product-card--v--add-to-cart">
-                    <i class="fas fa-shopping-cart"></i> Bestellen
-                </button>
-            </form>
+                <form class="js-add-to-cart-form product-card--v--add-to-cart-form ml-auto">
+                    <input type="hidden" id="add-to-cart" name="add-to-cart" value="{{ product.ID }}" />
+                    <input type="hidden" id="quantity" name="quantity" value="1" />
+                    {% if _product.get_type is not same as('variable') %}
+                        <button type="submit" class="product-card--add-to-cart product-card--v--add-to-cart">
+                            <i class="fas fa-shopping-cart"></i> Bestellen
+                        </button>
+                        {% else %}
+                            <a href="{{ product.link }}" class="product-card--add-to-cart product-card--v--add-to-cart product-card--v-add-to-options product--card--add-to-options">
+                            Kies opties
+                        </a>
+                    {% endif %}
+                </form>
         </footer>
     </main>
 </article>

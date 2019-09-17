@@ -1,0 +1,51 @@
+%cart-row {
+  @media screen and (max-width: map-get($screens, 'md')) {
+    $sp: .5rem;
+
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    padding-left: $sp;
+    padding-right: $sp;
+    text-align: right;
+
+    &::before {
+      content: attr(data-title) ':';
+      margin-right: auto;
+      font-weight: 700;
+      color: theme-get-color('black');
+    }
+  }
+}
+@media screen and (max-width: map-get($screens, 'md')) {
+  .table-row--cart {
+    display: block;
+    margin-bottom: 1rem;
+
+    .cart-thumbnail {
+      display: none;
+    }
+  }
+
+  .table-footer--cart{
+    display: block;
+    td:not(:last-of-type) {
+      padding: 0;
+    }
+  }
+}
+
+.table-row--cart {
+  .cart-delete,
+  .cart-price,
+  .cart-title,
+  .cart-qty {
+    @extend %cart-row;
+  }
+}
+
+.table-footer--cart {
+  .cart-totals {
+    @extend %cart-row;
+  }
+}

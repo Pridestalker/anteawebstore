@@ -1,4 +1,6 @@
-.cart-container--button {
-  padding: 2rem 0;
-  width: 80%;
+.mobile-padded {
+  @media screen and (max-width: map-get($screens, 'md')) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

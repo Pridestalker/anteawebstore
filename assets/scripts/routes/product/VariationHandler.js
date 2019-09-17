@@ -23,7 +23,7 @@ const urlSwitcher = (attr, val) => {
 
     qp.set(attr, val);
 
-    window.location.search = qp.toString();
+    // window.location.search = qp.toString();
 }
 
 const switchSelector = () => '[data-attribute_name]';

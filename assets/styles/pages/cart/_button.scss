@@ -1,0 +1,10 @@
+.cart-container--button {
+  padding: 2rem 0;
+  width: 80%;
+  display: flex;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    padding: 1rem;
+    width: auto;
+  }
+}

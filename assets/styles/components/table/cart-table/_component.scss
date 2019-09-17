@@ -2,6 +2,14 @@
   width: $ctable-width;
   border-collapse: collapse;
   text-align: $ctable-textalign;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 0 1rem;
+  }
 }
 
 .table-header--cart {
@@ -12,6 +20,10 @@
     @if $ctable-border--header {
       border: $ctable-border--header;
     }
+  }
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: none;
   }
 }
 
