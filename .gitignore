@@ -116,5 +116,5 @@ $RECYCLE.BIN/
 *.lnk
 
 
-.crt
-.key
+*.crt
+*.key
