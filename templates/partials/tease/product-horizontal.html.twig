@@ -44,7 +44,11 @@
 
     <aside class="product-card--h--sidebar">
         <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--h--price">
-            {{ _product.get_price_html }}
+            {% if _product.get_type is same as ('variable') %}
+                {{ _product.get_price_html }}
+            {% else %}
+                {{ _product.get_price_html }}
+            {% endif %}
         </a>
         <span class="product-card--h--availability">
             <i class="fas fa-check"></i> Beschikbaar
@@ -52,9 +56,15 @@
         <form class="js-add-to-cart-form product-card--h--add-to-cart-form">
             <input type="hidden" id="product_id" name="product_id" value="{{ product.ID }}" />
             <input type="hidden" id="quantity" name="quantity" value="1" />
-            <button type="submit" class="product-card--add-to-cart product-card--h--add-to-cart">
-                <i class="fas fa-shopping-cart"></i> Bestellen
-            </button>
+            {% if _product.get_type is not same as('variable') %}
+                <button type="submit" class="product-card--add-to-cart product-card--h--add-to-cart">
+                    <i class="fas fa-shopping-cart"></i> Bestellen
+                </button>
+            {% else %}
+                <a href="{{ product.link }}" class="product-card--add-to-cart product-card--h--add-to-cart product-card--h-add-to-options product--card--add-to-options">
+                    Kies opties
+                </a>
+            {% endif %}
         </form>
     </aside>
 </article>

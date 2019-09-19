@@ -18,7 +18,11 @@
             {{ product.post_excerpt }}
         </p>
         <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--v--price">
-            v.a. &euro; {{ _product.get_price }}
+            {% if _product.get_type is same as ('variable') %}
+                {{ _product.get_price_html }}
+            {% else %}
+                v.a. {{ _product.get_price_html }}
+            {% endif %}
         </a>
         <footer class="product-card--v--footer">
             <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--v--more-info">

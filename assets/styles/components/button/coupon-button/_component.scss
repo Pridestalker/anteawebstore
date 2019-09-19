@@ -1,0 +1,19 @@
+.checkout-add-coupon {
+  @extend %btn;
+
+  border: 1px solid theme-get-color('success');
+  color: theme-get-color('success');
+  text-transform: uppercase;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: get-spacing('lg');
+  width: 50%;
+  text-align: center;
+
+  transition: all 225ms linear;
+  &:hover {
+    color: theme-get-color('primary');
+    border-color: theme-get-color('primary');
+  }
+}

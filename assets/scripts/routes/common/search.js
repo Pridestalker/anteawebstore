@@ -1,16 +1,19 @@
 const formHandler = () => {
     const form = document.querySelector('.js-search-form');
+    const input = form.querySelector('#s');
 
-    if (!form) {
+    if (!form || !input) {
         return;
     }
-    preventDefault(form);
+    preventActions(form, input);
 }
 
-const preventDefault = (el) => {
-    el.addEventListener('submit', function (e) {
-        e.target.preventDefault();
-        e.preventDefault();
+const preventActions = (el, input) => {
+    el.addEventListener('submit', (e) => {
+        if (!input.classList.contains('active')) {
+            e.preventDefault();
+            input.classList.add('active');
+        }
     })
 }
 

@@ -1,0 +1,7 @@
+.search-results--title {
+  a {
+    color: theme-get-color('black');
+    text-decoration: none;
+    border-bottom: 1px dotted theme-get-color('black');
+  }
+}

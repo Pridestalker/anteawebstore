@@ -1,0 +1,21 @@
+.notification {
+  padding: get-spacing('lg');
+  position: absolute;
+  z-index: 9999;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    bottom: 35%;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+.notification-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

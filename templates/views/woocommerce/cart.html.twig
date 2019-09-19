@@ -1,11 +1,11 @@
-{% do action('woocommerce_before_cart') %}
 
 <div class="container auto">
+    {% do action('woocommerce_before_cart') %}
     <h1 class="page-title mobile-padded">
         Winkelwagen
     </h1>
 
-    <form action="{{ cart_url }}">
+    <form action="{{ cart_url }}" method="post">
         {% do action('woocommerce_before_cart_table') %}
         <table class="table--cart table">
             <thead class="table-header table-header--cart">
@@ -21,6 +21,7 @@
                 </tr>
             </thead>
             <tbody class="table-body table-body--cart">
+
             {% for key, product in cart_items %}
                 {% set _product = fn('wc_get_product', product.product_id) %}
                 {% set _thumb = Image(_product.get_image_id) %}
@@ -47,19 +48,20 @@
                     </td>
 
                     <td data-title="{{ __('Quantity', 'woocommerce') }}" class="cart-qty">
+                        {% set _qty = fn(
+                            'woocommerce_quantity_input',
+                            {
+                                'input_name': 'cart[' ~ key ~ '][qty]',
+                                'input_value': product.quantity,
+                                'max_value': _product.get_max_purchase_quantity,
+                                'min_value': 0,
+                                'product_name': _product.get_name
+                            },
+                            _product,
+                            false
+                            ) %}
                         {{
-                            fn(
-                                'woocommerce_quantity_input',
-                                {
-                                    'input_name': 'cart[' ~ key ~ '][qty]',
-                                    'input_value': product.quantity,
-                                    'max_value': _product.get_max_purchase_quantity,
-                                    'min_value': 0,
-                                    'product_name': _product.get_name
-                                },
-                                _product,
-                                false
-                            )
+                            _qty|apply_filters('woocommerce_cart_item_quantity', _qty, key, product)
                         }}
                     </td>
 
@@ -70,7 +72,7 @@
             {% endfor %}
             </tbody>
             <tfoot>
-            <tr class="table-footer--cart">
+            <tr class="table-footer--cart table-footer">
                 <td></td>
                 <td></td>
                 <td></td>
@@ -82,6 +84,12 @@
             </tr>
             </tfoot>
         </table>
+
+        <button type="submit" class="btn" name="update_cart" value="{{ __('Update cart', 'woocommerce') }}" style="display: none;">
+            {{ __('Update cart', 'woocommerce') }}
+        </button>
+
+        {{ fn('wp_nonce_field', 'woocommerce-cart', 'woocommerce-cart-nonce') }}
         {% do action('woocommerce_after_cart_table') %}
     </form>
 </div>

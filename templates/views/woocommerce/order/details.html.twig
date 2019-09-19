@@ -1,0 +1,56 @@
+<section class="container auto order-details">
+    {% do action('woocommerce_order_details_before_order_table', order) %}
+    <h2 class="page-title">{{ __('Order details', 'woocommerce') }}</h2>
+    <table class="table--order-details table">
+        <thead class="table-header--order-details table-header">
+            <tr>
+                <th data-title="{{ __('Product', 'woocommerce') }}">
+                    {{ __('Product', 'woocommerce') }}
+                </th>
+                <th data-title="{{ __('Total', 'woocommerce') }}">
+                    {{ __('Total', 'woocommerce') }}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="table-body--order-details table-body">
+            {% do action('woocommerce_order_details_before_order_table_items', order) %}
+
+            {% for item_id, item in order_items %}
+                {{ include('partials/woocommerce/order/details-item.html.twig', { product: item.get_product}) }}
+            {% endfor %}
+
+            {% do action('woocommerce_order_details_after_order_table_items', order) %}
+        </tbody>
+
+        <tfoot class="table-footer table-footer--order-details">
+            {% for key, total in order.get_order_item_totals %}
+                <tr>
+                    <th scope="row">
+                        {{ total.label }}
+                    </th>
+                    <td class="order-details-price">
+                        {{ total.value }}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            {% if order.get_customer_note %}
+                <tr>
+                    <th>
+                        {{ __('Note:', 'woocommerce') }}
+                    </th>
+                    <td>
+                        {{ order.get_customer_note }}
+                    </td>
+                </tr>
+            {% endif %}
+        </tfoot>
+    </table>
+
+    {% do action('woocommerce_order_Details_after_order_table', order) %}
+</section>
+
+{% if show_customer_details %}
+    {{ include('partials/woocommerce/order/details-customer.html.twig', { order: order}) }}
+{% endif %}

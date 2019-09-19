@@ -1,7 +1,9 @@
 {% extends 'layouts/app.twig' %}
 
 {% block content %}
-    {% do action('woocommerce_before_single_product') %}
+    <div class="container auto">
+        {% do action('woocommerce_before_single_product') %}
+    </div>
 
     {{ include('partials/woocommerce/product/header.html.twig') }}
 

@@ -1,0 +1,48 @@
+.table--order-details {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 0 1rem;
+  }
+}
+
+.table-header--order-details {
+  background-color: theme-get-color('secondary');
+  th {
+    padding: 1rem;
+  }
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: none;
+  }
+}
+
+.table-body--order-details {
+  td {
+    padding: 1rem;
+  }
+}
+
+.table-footer--order-details {
+  td, th {
+    padding: .5rem 1rem;
+  }
+}
+
+.order-details-title {
+  a {
+    font-weight: 600;
+    color: theme-get-color('black');
+    text-decoration: none;
+  }
+}
+
+.order-details-price {
+  color: theme-get-color('primary');
+  font-weight: 600;
+}

@@ -1,0 +1,61 @@
+<table class="table table--checkout--review-order">
+    <thead class="table-header table-header--checkout--review-order">
+
+    </thead>
+
+    <tbody class="table-body table-body--checkout--review-order">
+        {% for key, product in cart_items %}
+            {% set _product = fn('wc_get_product', product.product_id) %}
+            {% set _thumb = Image(_product.get_image_id) %}
+
+            <tr class="table-row table-row--checkout--review-order">
+                <td class="checkout-thumbnail">
+                    <img alt="{{ _product.get_name }}" class="checkout-thumbnail--image" src="{{ _thumb.src('thumbnail') }}">
+                </td>
+
+                <td class="checkout-title" data-title="{{ __('Product', 'woocommerce') }}">
+                    {{ product.data.get_name }}
+                </td>
+
+                <td class="checkout-qty" data-title="{{ __('Quantity', 'woocommerce') }}">
+                    <span class="checkout-bordered-qty">
+                        {{ product.quantity }}
+                    </span>
+                </td>
+
+                <td class="checkout-price checkout-price--subtotal" data-title="{{ __('Subtotal', 'woocommerce') }}">
+                    {{ cart.get_product_subtotal(_product, product.quantity) }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    <tfoot class="table-footer table-footer--checkout--review-order">
+        <tr class="table-row table-row--checkout--footer">
+            <th class="table-head table-head--checkout--footer" colspan="3">
+                Subtotaal
+            </th>
+            <td class="checkout-subtotal checkout-price">
+                {{ fn('wc_cart_totals_subtotal_html') }}
+            </td>
+        </tr>
+
+        <tr class="table-row table-row--checkout--footer">
+            <th class="table-head table-head--checkout--footer" colspan="3">
+                BTW 21%
+            </th>
+            <td class="checkout-subtotal checkout-price">
+                {{ fn('wc_cart_totals_taxes_total_html') }}
+            </td>
+        </tr>
+
+        <tr class="table-row table-row--checkout--footer">
+            <th class="table-head table-head--checkout--footer" colspan="3">
+                Totaal
+            </th>
+            <td class="checkout-subtotal checkout-price">
+                {{ fn('wc_cart_totals_order_total_html') }}
+            </td>
+        </tr>
+    </tfoot>
+</table>

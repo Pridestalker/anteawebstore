@@ -1,0 +1,16 @@
+.wac-quantity {
+  display: flex;
+  justify-content: center;
+
+  input {
+    height: 100%;
+    appearance: textfield;
+  }
+}
+
+.wac-qty-button {
+  all: unset;
+  a {
+    @extend %btn;
+  }
+}

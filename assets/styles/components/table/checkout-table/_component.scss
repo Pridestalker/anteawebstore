@@ -1,0 +1,60 @@
+.table--checkout--review-order {
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+
+.table-row--checkout--review-order {
+  border-bottom: 1px dotted theme-get-color('black');
+
+  td {
+    $sp: 1rem;
+    padding: $sp 0;
+
+    &:not(:first-of-type) {
+      padding-left: $sp;
+      padding-right: $sp;
+    }
+  }
+
+  &:first-of-type {
+    border-top: 1px dotted theme-get-color('black');
+  }
+}
+
+.checkout-thumbnail--image {
+  width: 55px;
+  height: 55px;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: none;
+  }
+}
+
+.checkout-title {
+  font-weight: 600;
+}
+
+.checkout-bordered-qty {
+  border: 1px solid theme-get-color('black');
+  padding: .25rem
+}
+
+.checkout-price {
+  color: theme-get-color('primary');
+  font-weight: 600;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.table-head--checkout--footer {
+  text-align: left;
+}
+
+.table-head--checkout--footer {
+  font-weight: 400;
+  padding: get-spacing('sm') 0;
+}
+
+.table-footer--checkout--review-order {
+  border-bottom: 1px dotted theme-get-color('black');
+}

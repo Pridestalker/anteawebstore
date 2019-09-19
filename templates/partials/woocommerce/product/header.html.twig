@@ -1,4 +1,10 @@
-<header class="product-header" style="background-image: url({{ post.thumbnail.src('large') }})">
+{% if post.get_field('header_image') %}
+    {% set _header_img = Image(post.get_field('header_image')) %}
+{% else %}
+    {% set _header_img = post.thumbnail %}
+{% endif %}
+
+<header class="product-header" style="background-image: url({{ _header_img.src('large') }})">
     <div class="container auto flex">
         <aside class="product-header__floater">
                 <span class="product-header__category">

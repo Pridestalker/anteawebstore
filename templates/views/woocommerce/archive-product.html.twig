@@ -1,13 +1,13 @@
 {% extends 'layouts/app.twig' %}
 
 {% block content %}
-    <div class="container auto products mobile-padded">
+    <div class="container auto mobile-padded">
         <h1 class="page-title">{{ title }}</h1>
         <main class="grid">
             <div class="col-3">
-                <!-- FILTER HERE -->
+                {{ theme.theme_mod('store_archive_filter_shortcode')|shortcodes }}
             </div>
-            <section class="col-9">
+            <section class="col-9 products">
                 {% for product in products %}
                     {{ include('partials/tease/product-horizontal.html.twig', { product: product }, with_context = false) }}
                 {% endfor %}

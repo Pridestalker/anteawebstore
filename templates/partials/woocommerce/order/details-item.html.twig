@@ -1,0 +1,26 @@
+{% set _is_visible = product and product.is_visible %}
+{% set _permalink = product.get_permalink %}
+
+{% if _is_visible %}
+
+    <tr class="table-row--order-details--item table-row">
+        <td class="order-details-title">
+            <a href="{{ _permalink }}">
+                {{ product.get_name }}
+            </a>
+        </td>
+
+        <td class="order-details-total order-details-price">
+            {{ order.get_formatted_line_subtotal(item) }}
+        </td>
+    </tr>
+
+    {% if show_purchase_note and purchase_note %}
+        <tr>
+            <td colspan="2">
+                {{ purchase_note }}
+            </td>
+        </tr>
+    {% endif %}
+
+{% endif %}

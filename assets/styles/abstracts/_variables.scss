@@ -8,6 +8,15 @@ $secondary-invert: find-color-invert($secondary) !default;
 $success: hsl(88, 85%, 26%) !default;
 $succes-invert: find-color-invert($success) !default;
 
+$warning: hsl(54, 100%, 66%) !default;
+$warning-invert: find-color-invert($warning) !default;
+
+$danger: hsl(354, 100%, 53%) !default;
+$danger-invert: find-color-invert($danger) !default;
+
+$info: hsl(185, 100%, 66%) !default;
+$info-invert: find-color-invert($info) !default;
+
 $white: hsla(0, 100%, 100%, 1) !default;
 $white-invert: find-color-invert($white) !default;
 
@@ -20,6 +29,9 @@ $theme-colors: (
   'primary': ($primary, $primary-invert),
   'secondary': ($secondary, $secondary-invert),
   'success': ($success, $succes-invert),
+  'warning': ($warning, $warning-invert),
+  'danger': ($danger, $danger-invert),
+  'info': ($info, $info-invert),
   'white': ($white, $white-invert),
   'black': ($black, $black-invert),
 ) !default;
