@@ -1,5 +1,9 @@
 .product-card--vertical {
   background: $card-product-v-background;
+
+  figure {
+    margin: 0;
+  }
 }
 
 .product-card--v--content {
@@ -12,6 +16,7 @@
   font-size: $card-product-v-content-title-fontsize;
   a {
     color: $card-product-v-content-title-link-color;
+    text-decoration: none;
   }
 }
 

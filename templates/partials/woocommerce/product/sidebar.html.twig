@@ -1,19 +1,21 @@
 <aside class="product-sidebar">
-    <select>
-        <option>Basis</option>
-        <option>Gevorderd</option>
-    </select>
-
     <span class="product-price" style="display: block">
         Vanaf: <span class="product-price-number">&euro; {{ product.get_price }}</span>
     </span>
 
     <form method="GET" class="product-add-to-cart-form">
-        <input type="number" name="quantity" id="quantity" value="1" min="1" />
-        <input type="hidden" value="{{ post.ID }}" id="add-to-cart" name="add-to-cart">
-        <button type="submit" class="product-add-to-cart">
-            <i class="fas fa-shopping-cart"></i> bestellen
-        </button>
+        <div class="flex">
+            <section class="add-to-cart-qty-input">
+                <button type="button" class="js-btn-sub qty-btn qty-btn--left">-</button>
+                <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                <button type="button" class="js-btn-add qty-btn qty-btn--right">+</button>
+            </section>
+            <input type="hidden" value="{{ post.ID }}" id="product_id" name="product_id">
+            <input type="hidden" value="{{ post.ID }}" id="add-to-cart" name="add-to-cart">
+            <button type="submit" class="product-add-to-cart">
+                <i class="fas fa-shopping-cart"></i> bestellen
+            </button>
+        </div>
     </form>
 
 

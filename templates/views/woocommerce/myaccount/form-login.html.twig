@@ -1,0 +1,126 @@
+{% do action('woocommerce_before_customer_login_form') %}
+
+<main class="container auto">
+    <div class="grid">
+        <div class="col-6">
+            <h2 class="page-title">
+                {{ __('Login', 'woocommerce') }}
+            </h2>
+            <form method="post" class="woocommerce-form woocommerce-form-login login">
+                {% do action('woocommerce_login_form_start') %}
+
+                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                    <label for="username">
+                        {{ __('Username or email address', 'woocommerce') }}
+                    </label>
+                    <input type="text"
+                           class="woocommerce-Input woocommerce-Input--text input-text"
+                           name="username"
+                           id="username"
+                           autocomplete="username"
+                           value="{{ username }}" />
+                </p>
+                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                    <label for="password">
+                        {{ __('Password', 'woocommerce') }}
+                    </label>
+                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" />
+                </p>
+
+                {% do action('woocommerce_login_form') %}
+
+                <p class="form-row">
+                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                        <input class="woocommerce-form__input woocommerce-form__input-checkbox"
+                               name="rememberme"
+                               type="checkbox"
+                               id="rememberme"
+                               value="forever" /> <span> {{ __( 'Remember me', 'woocommerce' ) }}</span>
+                    </label>
+                    {% do fn('wp_nonce_field', 'woocommerce-login', 'woocommerce-login-nonce') %}
+
+                </p>
+                <p class="woocommerce-LostPassword lost_password">
+                    <button type="submit" class="button-login" name="login" value="{{ __( 'Log in', 'woocommerce' ) }}">
+                        {{ __( 'Log in', 'woocommerce' ) }}
+                    </button>
+                    <a href="{{ lost_password_url }}" class="button-forgot-password">
+                        {{ __( 'Lost your password?', 'woocommerce' ) }}
+                    </a>
+                </p>
+
+                {% do action('woocommerce_login_form_end') %}
+            </form>
+        </div>
+
+        {% if enable_registration %}
+            <div class="col-6">
+                <h2 class="page-title">
+                    {{ __('Register', 'woocommerce') }}
+                </h2>
+
+                <form method="post" class="woocommerce-form woocommerce-form-register register" {% do action('woocommerce_register_form_tag') %}>
+                    {% do action('woocommerce_register_form_start') %}
+
+                    {% if register.generate_username %}
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_username">
+                                {{ __('Username', 'woocommerce') }}
+                            </label>
+                            <input type="text"
+                                   class="woocommerce-Input woocommerce-Input--text input-text"
+                                   name="username"
+                                   id="reg_username"
+                                   autocomplete="username"
+                                   value="{{ username }}" />
+                        </p>
+                    {% endif %}
+
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_email">
+                            {{ __('Email address', 'woocommerce') }}
+                        </label>
+                        <input type="email"
+                               class="woocommerce-Input woocommerce-Input--text input-text"
+                               name="email"
+                               id="reg_email"
+                               autocomplete="email"
+                               value="{{ email }}" />
+                    </p>
+
+                    {% if register.generate_password %}
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_password">
+                                {{ __('Password', 'woocommerce') }}
+                            </label>
+                            <input type="password"
+                                   class="woocommerce-Input woocommerce-Input--text input-text"
+                                   name="password" id="reg_password" autocomplete="new-password" />
+                        </p>
+
+                    {% else %}
+                        <p>
+                            {{ __('A password will be sent to your email address.', 'woocommerce') }}
+                        </p>
+                    {% endif %}
+
+                    {% do action('woocommerce_register_form') %}
+
+                    <p class="woocommerce-FormRow form-row">
+                        {% do fn('wp_nonce_field', 'woocommerce-register', 'woocommerce-register-nonce') %}
+                        <button type="submit"
+                                class="button-register"
+                                name="register"
+                                value="{{ __('Register', 'woocommerce') }}" >
+                            {{ __('Register', 'woocommerce') }}
+                        </button>
+                    </p>
+
+                    {% do action('woocommerce_register_form_end') %}
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</main>
+
+{% do action('woocommerce_after_customer_login_form') %}

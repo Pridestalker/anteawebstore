@@ -2,6 +2,11 @@
   display: flex;
   width: 100%;
   background: theme-get-color('secondary');
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    display: block;
+  }
+
 }
 
 .product-card--h--image-wrapper {
@@ -11,14 +16,26 @@
 .product-card--h--image {
   width: 300px;
   height: 300px;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    width: auto;
+    height: auto;
+  }
 }
 
 .product-card--h--content {
   padding: 2rem;
+  max-width: 50%;
+  @media screen and (max-width: map-get($screens, 'md')) {
+    max-width: 100%;
+  }
 }
 
 .product-card--h--category {
-  color: adjust-color(theme-get-color('black'), $alpha: -.35)
+  a {
+    color: adjust-color(theme-get-color('black'), $alpha: -.35);
+    text-decoration: none;
+  }
 }
 
 .product-card--h--title {
@@ -41,6 +58,10 @@
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem 2rem 0;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    padding: 2rem;
+  }
 }
 
 .product-card--h--price {

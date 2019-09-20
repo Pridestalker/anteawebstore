@@ -1,19 +1,22 @@
 .checkout-add-coupon {
   @extend %btn;
 
-  border: 1px solid theme-get-color('success');
-  color: theme-get-color('success');
-  text-transform: uppercase;
+  border: get-border($btn-coupon-border);
+  color: $btn-coupon-color;
+  text-transform: $btn-coupon-texttransform;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: get-spacing('lg');
-  width: 50%;
-  text-align: center;
+  @if $btn-coupon-selfcentered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  margin:$btn-coupon-margin;
+  width: $btn-coupon-width;
+  text-align: $btn-coupon-textalign;
 
   transition: all 225ms linear;
   &:hover {
-    color: theme-get-color('primary');
-    border-color: theme-get-color('primary');
+    color: $btn-coupon-color--hover;
+    border: get-border($btn-coupon-border--hover);
   }
 }

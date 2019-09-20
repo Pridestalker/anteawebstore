@@ -40,3 +40,37 @@
 
   @return unquote(map-get($fonts, $name));
 }
+
+@function make-border($width: 1px, $style: solid, $color: theme-get-color('primary')) {
+  @if unitless($width) {
+    $with: $width * 1px;
+  }
+  @return (
+      'width': $width,
+      'style': $style,
+      'color': $color,
+  );
+}
+
+@function get-border($map) {
+  $defaults: (
+      'width': 1px,
+      'style': solid,
+      'color': theme-get-color('primary'),
+  );
+
+  @if not map-has-key($map, 'width') {
+    @warn 'No width supplied, using `1px`';
+  }
+
+  @if not map-has-key($map, 'style') {
+    @warn 'No style supplied, using `solid`'
+  }
+
+  @if not map-has-key($map, 'color') {
+    @warn 'No color supplied, using `primary`';
+  }
+
+  $map: map-merge($defaults, $map);
+  @return map-get($map, 'width') map-get($map, 'style') map-get($map, 'color');
+}

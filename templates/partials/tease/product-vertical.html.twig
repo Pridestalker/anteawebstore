@@ -15,15 +15,15 @@
             </a>
         </h3>
         <p class="product-card--v--excerpt">
-            {{ product.post_excerpt }}
+            {{ _product.get_short_description }}
         </p>
-        <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--v--price">
+        <span class="product-card--v--price">
             {% if _product.get_type is same as ('variable') %}
                 {{ _product.get_price_html }}
             {% else %}
                 v.a. {{ _product.get_price_html }}
             {% endif %}
-        </a>
+        </span>
         <footer class="product-card--v--footer">
             <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--v--more-info">
                 Meer informatie

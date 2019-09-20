@@ -1,0 +1,9 @@
+$button-login-background: theme-get-color('primary') !default;
+$button-login-color: theme-get-color('white') !default;
+$button-login-margin: 0 .5rem 0 0 !default;
+
+$button-forgotpass-border: make-border(1px, solid, theme-get-color('primary')) !default;
+$button-forgotpass-color: theme-get-color('primary') !default;
+
+$button-register-background: theme-get-color('secondary') !default;
+$button-register-color: theme-get-color('primary') !default;

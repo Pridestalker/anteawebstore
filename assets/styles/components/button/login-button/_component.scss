@@ -1,0 +1,22 @@
+.button-login {
+  @extend %btn;
+
+  background: $button-login-background;
+  color: $button-login-color;
+  margin-right: $button-login-margin;
+}
+
+.button-forgot-password {
+  @extend %btn;
+
+  border: get-border($button-forgotpass-border);
+  color: $button-forgotpass-color;
+  text-decoration: none;
+}
+
+.button-register {
+  @extend %btn;
+
+  background: $button-register-background;
+  color: $button-register-color;
+}

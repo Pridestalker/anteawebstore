@@ -1,4 +1,4 @@
-.container {
+%container {
   @each $breakpoint, $value in $screens {
     @include min-breakpoint($value) {
       max-width: $value;
@@ -9,4 +9,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+.container {
+  @extend %container;
 }

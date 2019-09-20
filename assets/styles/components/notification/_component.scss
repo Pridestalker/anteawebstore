@@ -1,10 +1,12 @@
 .notification {
   padding: get-spacing('lg');
-  position: absolute;
+  position: fixed;
   z-index: 9999;
-  top: 25%;
-  left: 25%;
-  right: 25%;
+  max-width: 80vw;
+  border-radius: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: float-in 6s forwards;
 
   @media screen and (max-width: map-get($screens, 'md')) {
     bottom: 35%;
@@ -12,10 +14,45 @@
     right: 0;
     text-align: center;
   }
+
+  a.button {
+    display: none !important;
+  }
 }
 
 .notification-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@keyframes float-in {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  20% {
+    top: -20%;
+    opacity: 0;
+  }
+  21% {
+    top: 0;
+    opacity: .2;
+  }
+  29% {
+    top: 2.5rem;
+    opacity: 1;
+  }
+  50% {
+    top: 2.5rem;
+  }
+  80% {
+    top: 2.5rem;
+    opacity: 1;
+  }
+  100% {
+    top: -100%;
+    visibility: hidden;
+    opacity: 0;
+  }
 }

@@ -1,0 +1,13 @@
+{% do action('woocommerce_before_account_navigation') %}
+<nav class="account-sidenav">
+    <ul class="account-sidenav-list">
+        {% for endpoint, label in acc_menu_items %}
+            <li class="{{ fn('wc_get_account_menu_item_classes', endpoint) }} account-sidenav-list-item">
+                <a href="{{ fn('wc_get_account_endpoint_url', endpoint) }}" class="account-sidenav-list-item-link">
+                    {{ label }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+{% do action('woocommerce_after_account_navigation') %}

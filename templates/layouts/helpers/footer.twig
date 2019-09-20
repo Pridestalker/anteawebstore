@@ -11,14 +11,16 @@
 <footer class="footer">
     <div class="container auto grid">
         <div class="col-3">
-            <h3>SITEMAP</h3>
-            <nav class="footer-menu">
-                {% for item in footerMenu.items %}
-                    <a href="{{ item.link }}" class="footer-menu-item" title="{{ item.title }}">
-                        {{ item.title }}
-                    </a>
-                {% endfor %}
-            </nav>
+            <section class="mobile-padded">
+                <h3>SITEMAP</h3>
+                <nav class="footer-menu">
+                    {% for item in footerMenu.items %}
+                        <a href="{{ item.link }}" class="footer-menu-item" title="{{ item.title }}">
+                            {{ item.title }}
+                        </a>
+                    {% endfor %}
+                </nav>
+            </section>
         </div>
         <div class="col-3">
             {% do fn('elementor_theme_do_location', 'footer-column-2') %}

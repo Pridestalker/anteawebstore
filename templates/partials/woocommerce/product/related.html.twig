@@ -1,9 +1,9 @@
-<section>
-    <h4 class="product-title title-relateds">Anderen kochten ook</h4>
+<section class="mobile-padded">
+    <h4 class="product-title page-title title-relateds">Anderen kochten ook</h4>
 
     <div class="grid">
         {% for related in related_products %}
-            <div class="col-4">
+            <div class="col-3">
                 {{ include('partials/tease/product-vertical.html.twig', { product: related }, with_context = false) }}
             </div>
         {% endfor %}

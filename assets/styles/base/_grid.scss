@@ -13,6 +13,10 @@ $neat-grid: (
   &.flow {
     flex-wrap: wrap;
   }
+
+  @media screen and (max-width: 1024px) {
+    margin: 0;
+  }
 }
 
 @for $i from 1 through $grid-columns {
@@ -21,6 +25,8 @@ $neat-grid: (
 
     @media screen and (max-width: 1024px) {
       @include grid-column($grid-columns);
+      margin-left: 0;
+      width: 100%;
     }
   }
 }

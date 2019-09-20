@@ -1,0 +1,10 @@
+$btn-coupon-border: make-border(1px, solid, theme-get-color('success')) !default;
+$btn-coupon-color: theme-get-color('success') !default;
+$btn-coupon-texttransform: uppercase !default;
+$btn-coupon-selfcentered: true !default;
+$btn-coupon-margin: get-spacing('lg') 0 0 !default;
+$btn-coupon-width: 50% !default;
+$btn-coupon-textalign: center !default;
+
+$btn-coupon-color--hover: theme-get-color('primary') !default;
+$btn-coupon-border--hover: make-border($color: theme-get-color('primary')) !default;

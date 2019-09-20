@@ -11,7 +11,7 @@
 
     <main class="product-card--h--content">
         <small class="product-card--h--category">
-            Ruimte en water
+            {{ fn('wc_get_product_category_list', post.ID) }}
         </small>
         <h3 class="product-card--h--title">
             <a href="{{ product.link }}" title="Bekijk {{ product.title }}">
@@ -34,7 +34,7 @@
         <aside class="product-card--h--reviews"><!-- Sterren --></aside>
         <section>
             <p>
-                {{ post.excerpt }}
+                {{ _product.get_short_description }}
             </p>
             <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--h--more-info">
                 Meer informatie
@@ -43,13 +43,13 @@
     </main>
 
     <aside class="product-card--h--sidebar">
-        <a href="{{ product.link }}" title="Bekijk {{ product.title }}" class="product-card--h--price">
+        <span class="product-card--h--price">
             {% if _product.get_type is same as ('variable') %}
                 {{ _product.get_price_html }}
             {% else %}
                 {{ _product.get_price_html }}
             {% endif %}
-        </a>
+        </span>
         <span class="product-card--h--availability">
             <i class="fas fa-check"></i> Beschikbaar
         </span>

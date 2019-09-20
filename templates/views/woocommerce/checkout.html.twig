@@ -1,8 +1,8 @@
 <main>
     <!-- TODO: Remove actions from 'woocommerce_before_checkout_form -->
-{#    {% do action('woocommerce_before_checkout_form', checkout) %}#}
 
     <section class="container auto">
+{#    {% do action('woocommerce_before_checkout_form', checkout) %}#}
         <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
             <p>
@@ -23,24 +23,30 @@
         </form>
     </section>
 
-    <form action="{{ fn('wc_get_checkout_url') }}" method="POST" name="checkout" class="form-checkout">
+    <form action="{{ fn('wc_get_checkout_url') }}" method="POST" name="checkout" class="form-checkout checkout woocommerce-checkout">
+
         {% if checkout.get_checkout_fields %}
             <div class="container auto mobile-padded">
 
                 <div class="grid">
                     <div class="col-6">
+                        {% do action('woocommerce_checkout_before_customer_details') %}
                         <h2 class="page-title">
                             Gegevens
                         </h2>
                         {% do action('woocommerce_checkout_before_customer_details') %}
                         {% do action('woocommerce_checkout_billing') %}
                         {% do action('woocommerce_checkout_after_customer_details') %}
+                        {% do action('woocommerce_checkout_after_customer_details') %}
                     </div>
                     <div class="col-6">
                         <h2 class="page-title">
                             Besteloverzicht
                         </h2>
+                        {% do action('woocommerce_checkout_before_order_review_heading') %}
+                        {% do action('woocommerce_checkout_before_order_review') %}
                         {% do fn('woocommerce_order_review') %}
+                        {% do action('woocommerce_checkout_after_order_review') %}
                         <a class="showcoupon checkout-add-coupon" href="#">
                             Kortingscode toevoegen
                         </a>
@@ -59,5 +65,7 @@
                 </section>
             </div>
         </div>
+
+        {% do action('woocommerce_after_checkout_form', checkout) %}
     </form>
 </main>
