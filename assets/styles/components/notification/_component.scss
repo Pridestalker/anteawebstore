@@ -1,5 +1,5 @@
 .notification {
-  padding: get-spacing('lg');
+  padding: 1rem get-spacing('lg') get-spacing('lg');
   position: fixed;
   z-index: 9999;
   max-width: 80vw;

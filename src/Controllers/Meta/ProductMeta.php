@@ -15,6 +15,8 @@ class ProductMeta extends Field
                 [
                     Meta::make('image', 'header_image', __('Header Image')),
                     
+                    Meta::make('image', 'hover_image', __('Hover Image')),
+                    
                     Meta::make('complex', 'faq', __('FAQ'))
                         ->add_fields([
                             Meta::make('text', 'question', __('Question')),
