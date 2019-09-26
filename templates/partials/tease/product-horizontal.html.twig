@@ -2,16 +2,24 @@
     {% set _product = fn('wc_get_product', product.ID) %}
 {% endif %}
 
+{% if product.get_field('hover_image') %}
+    {% set _hoverImage = Image(product.get_field('hover_image')) %}
+{% else %}
+    {% set _hoverImage = false %}
+{% endif %}
+
 <article class="product-card product-card--horizontal">
     <figure class="product-card--h--image-wrapper">
         <a href="{{ _product.get_permalink }}" title="{{ product.title }}">
-            <img class="product-card--h--image" src="{{ product.thumbnail('medium') }}" alt="{{ product.thumbnail.alt?? product.title }}" />
+            <img class="product-card--h--image" src="{{ product.thumbnail('full') }}" alt="{{ product.thumbnail.alt?? product.title }}" />
+
+            <img alt="{{ _hoverImage.alt?? product.title }}" class="product-card--h--image--hover" src="{{ _hoverImage ? _hoverImage.src('full') : product.thumbnail('full') }}" />
         </a>
     </figure>
 
     <main class="product-card--h--content">
         <small class="product-card--h--category">
-            {{ fn('wc_get_product_category_list', post.ID) }}
+            {{ fn('wc_get_product_category_list', _product.get_id) }}
         </small>
         <h3 class="product-card--h--title">
             <a href="{{ product.link }}" title="Bekijk {{ product.title }}">
@@ -21,7 +29,7 @@
         <small>
             {% for attribute in _product.get_attributes %}
                 {% if attribute.get_visible %}
-                    {% set _attributes = fn('get_the_terms', post.ID, attribute.get_name) %}
+                    {% set _attributes = fn('get_the_terms', _product.get_id, attribute.get_name) %}
                     <span class="product-card--h--product-attributes product-attributes_{{ attribute.get_name|replace({'pa_': ''}) }}">
                         {% for _attribute in _attributes %}
                             <span data-attribute="{{ attribute.get_name|replace({'pa_': ''}) }}" data-value="{{ _attribute.slug }}">{{ _attribute.name }}{% if not loop.last %}, {% endif %}</span>

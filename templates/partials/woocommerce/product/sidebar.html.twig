@@ -1,6 +1,6 @@
 <aside class="product-sidebar">
     <span class="product-price" style="display: block">
-        Vanaf: <span class="product-price-number">&euro; {{ product.get_price }}</span>
+        <span class="product-price-number">{{ product.get_price_html }}</span>
     </span>
 
     <form method="GET" class="product-add-to-cart-form">

@@ -2,10 +2,23 @@
     {% set _product = fn('wc_get_product', product.ID) %}
 {% endif %}
 
+{% if product.get_field('hover_image') %}
+    {% set _hoverImage = Image(product.get_field('hover_image')) %}
+{% else %}
+    {% set _hoverImage = false %}
+{% endif %}
+
 <article class="product-card--vertical product-card">
     <figure>
         <a href="{{ product.link }}">
-            <img class="product-card--v--image" src="{{ product.thumbnail('medium') }}" alt="{{ product.thumbnail.alt?? product.title }}" />
+            <img alt="{{ product.thumbnail.alt?? product.title }}"
+                 class="product-card--v--image"
+                 src="{{ product.thumbnail('full') }}" />
+
+            <img alt="{{ _hoverImage.alt?? product.title }}"
+                 class="product-card--v--image--hover"
+                 src="{{ _hoverImage ? _hoverImage.src('full') : product.thumbnail('full') }}"
+                />
         </a>
     </figure>
     <main class="product-card--v--content">
@@ -21,7 +34,7 @@
             {% if _product.get_type is same as ('variable') %}
                 {{ _product.get_price_html }}
             {% else %}
-                v.a. {{ _product.get_price_html }}
+                {{ _product.get_price_html }}
             {% endif %}
         </span>
         <footer class="product-card--v--footer">

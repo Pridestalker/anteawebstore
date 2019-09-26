@@ -15,27 +15,27 @@ class SingleProductWidget extends Widget_Base
     {
         return 'single-product';
     }
-     
+    
     public function get_title()
     {
         return __('Single product card');
     }
-     
+    
     public function get_icon(): string
     {
         return ' eicon-code';
     }
-     
+    
     public function get_categories(): array
     {
         return ['basic', 'general', 'woocommerce-elements'];
     }
-     
+    
     protected function _register_controls(): void
     {
         $this->render_query_controls();
     }
-     
+    
     private function render_query_controls(): void
     {
         $this->start_controls_section(
@@ -78,11 +78,11 @@ class SingleProductWidget extends Widget_Base
     
         $this->end_controls_section();
     }
-     
+    
     protected function render(): void
     {
         $settings = $this->get_settings();
-         
+        
         try {
             $post_ids = new Collection($settings[ 'query_posts_ids' ]);
         } catch (InvalidArgument $exception) {
@@ -91,8 +91,8 @@ class SingleProductWidget extends Widget_Base
         }
         $context = Timber::get_context();
 
-        $products = Timber::get_posts($post_ids->flatten()->toArray());
-         
+        $products = Timber::get_posts($post_ids->flatten()->toArray(), \App\Models\Post::class);
+        
         foreach ($products as $product) {
             $context['product'] = $product;
             Timber::render('partials/tease/product-vertical.html.twig', $context);

@@ -3,7 +3,33 @@
 
   figure {
     margin: 0;
+    background-size: cover;
+    height: 345px;
+    position: relative;
   }
+
+  &:hover {
+    .product-card--v--image {
+      opacity: 0;
+      transition: opacity 225ms linear;
+    }
+  }
+}
+
+.product-card--v--image {
+  opacity: 1;
+  transition: opacity 225ms linear;
+  z-index: 1;
+  position: relative;
+}
+
+.product-card--v--image--hover {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .product-card--v--content {

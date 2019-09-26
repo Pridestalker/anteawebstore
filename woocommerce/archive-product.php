@@ -3,7 +3,7 @@
 use Timber\Timber;
 
 $context = Timber::get_context();
-$posts = Timber::get_posts();
+$posts = Timber::get_posts(false, \App\Models\Post::class);
 
 $context['products'] = $posts;
 

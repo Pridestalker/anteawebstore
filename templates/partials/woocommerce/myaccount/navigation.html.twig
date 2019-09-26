@@ -1,4 +1,7 @@
 {% do action('woocommerce_before_account_navigation') %}
+<h1 class="page-title">
+    {{ __('Account', 'woocommerce') }}
+</h1>
 <nav class="account-sidenav">
     <ul class="account-sidenav-list">
         {% for endpoint, label in acc_menu_items %}

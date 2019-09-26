@@ -1,0 +1,29 @@
+.account-sidenav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-sidenav-list-item-link {
+  text-transform: uppercase;
+  color: theme-get-color('primary');
+  text-decoration: none;
+}
+
+.account-sidenav-list-item {
+  margin-bottom: get-spacing('sm');
+}
+
+@include min-breakpoint('md') {
+  .account-sidenav {
+    float: left;
+  }
+}
+
+.account-sidenav {
+  float: left;
+}
+
+.account-sidenav {
+  margin-bottom: 2rem;
+}

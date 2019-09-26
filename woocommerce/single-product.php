@@ -15,7 +15,7 @@ $context[ 'product' ] = wc_get_product($context[ 'post' ]->ID);
 
 $related_limit                 = 3;
 $related_ids                   = wc_get_related_products($context[ 'product' ]->get_id(), $related_limit);
-$context[ 'related_products' ] = Timber::get_posts($related_ids);
+$context[ 'related_products' ] = Timber::get_posts($related_ids, \App\Models\Post::class);
 wp_reset_postdata();
 
 if ($context['product'] instanceof WC_Product_Variable) {

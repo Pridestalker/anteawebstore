@@ -2,25 +2,49 @@
   display: flex;
   width: 100%;
   background: theme-get-color('secondary');
+  margin-bottom: .875rem;
 
   @media screen and (max-width: map-get($screens, 'md')) {
     display: block;
   }
 
+  &:hover {
+    .product-card--h--image {
+      opacity: 0;
+      transition: opacity 225ms linear;
+    }
+  }
 }
 
 .product-card--h--image-wrapper {
   margin: 0;
+  position: relative;
+
+  .product-card--h--image {
+    height: 100%;
+  }
 }
 
 .product-card--h--image {
   width: 300px;
-  height: 300px;
+  opacity: 1;
+  transition: opacity 225ms linear;
+  z-index: 1;
+  position: relative;
 
   @media screen and (max-width: map-get($screens, 'md')) {
     width: auto;
     height: auto;
   }
+}
+
+.product-card--h--image--hover {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .product-card--h--content {
