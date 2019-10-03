@@ -1,14 +1,14 @@
 $card-product-v-background: theme-get-color('secondary') !default;
 $card-product-v-content-color: theme-get-color('black') !default;
 
-$card-product-v-content-title-margin: 0 auto auto !default;
+$card-product-v-content-title-margin: 0 0 auto !default;
 $card-product-v-content-title-fontsize: 20px !default;
 $card-product-v-content-title-link-color: theme-get-color('black') !default;
 
 $card-product-v-content-price-fontweight: 600 !default;
 $card-product-v-content-price-color: theme-get-color('primary') !default;
 $card-product-v-content-price-fontsize: 20px !default;
-$card-product-v-content-price-margin: auto auto .5rem !default;
+$card-product-v-content-price-margin: auto 0 .5rem !default;
 
 $card-product-v-content-info-color: theme-get-color('black') !default;
 $card-product-v-content-info-underline: true !default;

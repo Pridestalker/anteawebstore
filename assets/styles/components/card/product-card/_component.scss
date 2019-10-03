@@ -1,5 +1,8 @@
 .product-card--vertical {
   background: $card-product-v-background;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   figure {
     margin: 0;
@@ -35,6 +38,9 @@
 .product-card--v--content {
   padding: get-spacing();
   color: $card-product-v-content-color;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 }
 
 .product-card--v--title {
@@ -67,4 +73,8 @@
 
 .product-card--v--more-info {
   color: $card-product-v-content-info-color;
+}
+
+.product-card--v--excerpt {
+  margin-top: auto;
 }
