@@ -120,7 +120,9 @@ class BannerWidget extends Widget_Base
     {
         $settings = $this->get_settings();
         $context = Timber::get_context();
-        $image = new Image($settings['image']['id']);
+        $image = new Image(
+            $settings['image']['id'] !== '' ? $settings['image']['id'] : $settings['image']['url']
+        );
         
         $context['image'] = $image->src($settings['image_size'] ?? 'full');
         $context['title'] = $settings['content'];
