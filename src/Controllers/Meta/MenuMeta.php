@@ -16,7 +16,9 @@ class MenuMeta extends Field
             ->add_fields(
                 [
                     Meta::make('select', 'crb_menu_icon', __('Choose menu icon'))
-                        ->set_options($this->getIconsForSelect())
+                        ->set_options($this->getIconsForSelect()),
+                    
+                    Meta::make('checkbox', 'crb_has_shopping_bubble', __('Has cart amount'))
                 ]
             );
     }

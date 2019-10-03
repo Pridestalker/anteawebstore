@@ -8,6 +8,7 @@
         <nav class="ml-auto top-navigation">
             {% for item in topMenu.items %}
                 {% set _icon = fn('carbon_get_nav_menu_item_meta', item.id, 'crb_menu_icon') %}
+                {% set _shoppingBubble = fn('carbon_get_nav_menu_item_meta', item.id, 'crb_has_shopping_bubble') %}
                 <a class="top-navigation-item" href="{{ item.link }}" title="{{ item.title }}">
                     {% if _icon %}
                         <i class="{{ _icon|replace({'_': ' '}) }}"></i>
@@ -15,6 +16,10 @@
                     <span class="not-mobile">
                         {{ item.title }}
                     </span>
+
+                    {% if _shoppingBubble %}
+                        <small class="badge top right white js-cart-amount" data-amount="{{ wc_cart_count }}">({{ wc_cart_count }})</small>
+                    {% endif %}
                 </a>
             {% endfor %}
         </nav>
