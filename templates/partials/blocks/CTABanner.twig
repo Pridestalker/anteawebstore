@@ -1,6 +1,7 @@
 {% if image %}
-    {% set _img = Image(image) %}
+    {% set _img = image %}
 {% endif %}
+
 
 <a
     class="cta-banner-wrapper"
@@ -10,8 +11,8 @@
 >
     <aside
             class="cta-banner-background"
-            data-background="{{ _img.src('large') }}"
-            style="background-image: url('{{ _img.src('large') }}');" >
+            data-background="{{ _img }}"
+            style="background-image: url('{{ _img }}');" >
         <div class="cta-banner-content">
             {{ title }}
         </div>

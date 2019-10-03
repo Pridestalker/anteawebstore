@@ -5,6 +5,7 @@ use \Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Utils;
 use \Elementor\Widget_Base;
+use Timber\Image;
 use Timber\Timber;
 
 class BannerWidget extends Widget_Base
@@ -46,7 +47,10 @@ class BannerWidget extends Widget_Base
                 'type'      => Controls_Manager::MEDIA,
                 'default'   => [
                     'url' => Utils::get_placeholder_image_src(),
-                ]
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
     
@@ -116,7 +120,9 @@ class BannerWidget extends Widget_Base
     {
         $settings = $this->get_settings();
         $context = Timber::get_context();
-        $context['image'] = $settings['image']['url'];
+        $image = new Image($settings['image']['id']);
+        
+        $context['image'] = $image->src($settings['image_size'] ?? 'full');
         $context['title'] = $settings['content'];
         $context['link'] = $settings['link'];
         
