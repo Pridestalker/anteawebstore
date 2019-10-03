@@ -2,6 +2,7 @@
 namespace App\Controllers\Elementor\Widgets;
 
 use \Elementor\Controls_Manager;
+use Elementor\Group_Control_Image_Size;
 use Elementor\Utils;
 use \Elementor\Widget_Base;
 use Timber\Timber;
@@ -49,6 +50,15 @@ class BannerWidget extends Widget_Base
             ]
         );
     
+        $this->add_group_control(
+            Group_Control_Image_Size::get_type(),
+            [
+                'name'      => 'image',
+                'default'   => 'large',
+                'separator' => 'none'
+            ]
+        );
+        
         $this->end_controls_section();
     }
     

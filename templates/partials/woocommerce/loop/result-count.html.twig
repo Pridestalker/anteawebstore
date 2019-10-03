@@ -1,0 +1,14 @@
+<p class="woocommerce-result-count">
+    {% if total is same as(1) %}
+        test
+        {{ __('Showing the single result', 'woocommerce') }}
+    {% elseif total <= per_page or per_page is same as(-1) %}
+        {{ _n('%d resultaat', '%d resultaten', total, 'agws')|format(total) }}
+    {% else %}
+        {{ _n(
+            '%1$d&ndash;%2$d van %3$d resultaat',
+            '%1$d&ndash;%2$d van %3$d resultaten',
+            total
+        )|format(first, last, total) }}
+    {% endif %}
+</p>
