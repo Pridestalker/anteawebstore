@@ -55,6 +55,10 @@
 
 .cart-delete--circle {
   color: $ctable-delete-color--circle;
+  .fa-xs & {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 .cart-delete--times {
