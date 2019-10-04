@@ -18,8 +18,15 @@
         </div>
     </form>
 
-
-    <span class="product-status available">Beschikbaar:</span> binnen 3 weken gerealiseerd
+    {% if product.is_in_stock %}
+        <span class="product-status available">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-check fa-stack-1x" style="color: #fff"></i>
+            </span>
+            Beschikbaar:
+        </span>
+    {% endif %}
 
     <ol class="product-usp">
         <li>Voeg dit product toe aan uw bestelling</li>
