@@ -19,8 +19,10 @@
 .product-card--h--image-wrapper {
   margin: 0;
   position: relative;
+  flex: 0 0 auto;
 
-  .product-card--h--image {
+  .product-card--h--image,
+  .product-card--h--image--hover {
     height: 100%;
   }
 }
@@ -45,6 +47,7 @@
   right: 0;
   top: 0;
   bottom: 0;
+  width: 300px;
 }
 
 .product-card--h--content {

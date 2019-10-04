@@ -7,7 +7,7 @@
 <header class="product-header" style="background-image: url({{ _header_img.src('full') }})">
     <div class="container auto flex">
         <aside class="product-header__floater">
-                <span class="product-header__category">
+                <span class="product-header__category" hidden>
                     {{ fn('wc_get_product_category_list', post.ID) }}
                 </span>
             <h1 class="product-header__title">{{ post.title }}</h1>

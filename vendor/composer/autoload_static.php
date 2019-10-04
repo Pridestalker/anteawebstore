@@ -14,6 +14,7 @@ class ComposerStaticInitd478b73b9349bee22e9b4091ab0df69b
         '89ff252b349d4d088742a09c25f5dd74' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/plugin-update-checker.php',
         'c39e5e966364f845b8dc03db0a1c135c' => __DIR__ . '/..' . '/aristath/kirki/kirki.php',
         '644832821dc5f369571c226eb740f0b8' => __DIR__ . '/../..' . '/src/app.php',
+        '48483d6c44b015b6d6d681c009d084a7' => __DIR__ . '/../..' . '/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (

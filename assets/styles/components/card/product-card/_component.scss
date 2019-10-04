@@ -39,8 +39,8 @@
   padding: get-spacing();
   color: $card-product-v-content-color;
   display: flex;
-  height: 100%;
   flex-direction: column;
+  flex: 1 1 auto;
 }
 
 .product-card--v--title {

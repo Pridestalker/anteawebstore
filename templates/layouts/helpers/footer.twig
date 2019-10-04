@@ -15,7 +15,7 @@
                 <h3>SITEMAP</h3>
                 <nav class="footer-menu">
                     {% for item in footerMenu.items %}
-                        <a href="{{ item.link }}" class="footer-menu-item" title="{{ item.title }}">
+                        <a href="{{ item.link }}" class="footer-menu-item" title="{{ item.title }}" target="{{ item.target }}">
                             {{ item.title }}
                         </a>
                     {% endfor %}

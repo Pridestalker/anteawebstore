@@ -16,7 +16,8 @@
     },
     "files": [
       "vendor/aristath/kirki/kirki.php",
-      "src/app.php"
+      "src/app.php",
+      "src/helpers.php"
     ]
   },
   "config": {

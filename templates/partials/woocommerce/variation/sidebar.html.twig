@@ -3,7 +3,7 @@
         {% do action( 'woocommerce_before_variations_form' ) %}
         <section class="">
             {% for key, attribute in attributes %}
-                Kies een {{ key|replace({'pa_': ''}) }}:
+                Kies een {{ key|replace({'pa_': ''})|replace({'-': ' '}) }}:
                 {% do fn('wc_dropdown_variation_attribute_options', {
                     'options': attribute,
                     'attribute': key,

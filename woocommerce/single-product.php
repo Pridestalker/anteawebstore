@@ -25,4 +25,6 @@ if ($context['product'] instanceof WC_Product_Variable) {
     array_unshift($templates, 'views/woocommerce/single-product-variation.html.twig');
 }
 
+setPostViews($context['post']->ID);
+
 Timber::render($templates, $context);

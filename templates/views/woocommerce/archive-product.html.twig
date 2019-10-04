@@ -7,12 +7,15 @@
         <main class="grid">
             <div class="col-3">
                 {{ theme.theme_mod('store_archive_filter_shortcode')|shortcodes }}
+                &nbsp;
             </div>
-            <section class="col-9 products">
+            <section class="col-9">
                 {% do action('woocommerce_before_shop_loop') %}
-                {% for product in products %}
-                    {{ include('partials/tease/product-horizontal.html.twig', { product: product }, with_context = false) }}
-                {% endfor %}
+                <div class="products">
+                    {% for product in products %}
+                        {{ include('partials/tease/product-horizontal.html.twig', { product: product }, with_context = false) }}
+                    {% endfor %}
+                </div>
                 {% do action('woocommerce_after_shop_loop') %}
             </section>
         </main>
