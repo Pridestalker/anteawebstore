@@ -16,6 +16,6 @@ function setPostViews($ID)
         add_post_meta($ID, $count_key, '0');
     } else {
         $count++;
-        update_post_meta($ID, $count_key, $count, $count);
+        update_post_meta($ID, $count_key, $count);
     }
 }
