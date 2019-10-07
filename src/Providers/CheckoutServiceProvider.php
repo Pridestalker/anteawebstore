@@ -37,7 +37,7 @@ class CheckoutServiceProvider
         woocommerce_form_field(
             'oprachtnr',
             [
-                'label'    => __('Oprachtnummer', 'agws'),
+                'label'    => __('Opdrachtnummer', 'agws'),
                 'required' => false,
                 'class'    => [ 'form-row-wide', 'checkout-form--opdrachtnr' ],
                 'clear'    => true,

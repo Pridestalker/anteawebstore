@@ -48,7 +48,9 @@
             </section>
         {% endif %}
 
-        {% do action('woocommerce_thankyou_' ~ order.get_payment_method, order.get_id) %}
+        <div class="container auto">
+            {% do action('woocommerce_thankyou_' ~ order.get_payment_method, order.get_id) %}
+        </div>
         {% do action('woocommerce_thankyou', order.get_id) %}
     {% else %}
         <section class="container auto">

@@ -1,0 +1,24 @@
+<section>
+    {{ description }}
+    <div class="grid">
+        {% for key, address in addresses %}
+            {% set _address = fn('wc_get_account_formatted_address', key) %}
+            <div class="col-6">
+                <h3 class="page-title">
+                    {{ address }}
+                </h3>
+                <a href="{{ fn('wc_get_endpoint_url', 'edit-address', key) }}" class="account-sidenav-list-item-link">
+                    {{ _address ? __('Edit', 'woocommerce') : __('Add', 'woocommerce') }}
+                </a>
+                <hr>
+                <address>
+                    {% if _address %}
+                        {{ _address }}
+                    {% else %}
+                        {{ __('You have not set up this type of address yet.', 'woocommerce') }}
+                    {% endif %}
+                </address>
+            </div>
+        {% endfor %}
+    </div>
+</section>

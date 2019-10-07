@@ -5,8 +5,7 @@ use App\Providers\AppServiceProvider;
 
 new AppServiceProvider();
 
-function anws_register_elementor_locations($elementor_theme_manager)
-{
+add_action('elementor/theme/register_locations', static function ($elementor_theme_manager) {
     
     $elementor_theme_manager->register_location(
         'footer-column-2',
@@ -34,5 +33,4 @@ function anws_register_elementor_locations($elementor_theme_manager)
             'edit_in_content' => false,
         ]
     );
-}
-add_action('elementor/theme/register_locations', 'anws_register_elementor_locations');
+});
