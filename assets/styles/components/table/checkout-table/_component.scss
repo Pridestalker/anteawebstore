@@ -32,6 +32,10 @@
 
 .checkout-title {
   font-weight: 600;
+  a {
+    text-decoration: none;
+    color: theme-get-color('black');
+  }
 }
 
 .checkout-bordered-qty {
@@ -57,4 +61,9 @@
 
 .table-footer--checkout--review-order {
   border-bottom: 1px dotted theme-get-color('black');
+}
+
+.table--checkout--review-order--shipping-title {
+  text-align: left;
+  font-weight: 400;
 }

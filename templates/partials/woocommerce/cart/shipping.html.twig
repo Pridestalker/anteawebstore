@@ -1,0 +1,42 @@
+<tr class="woocommerce-shipping-totals shipping">
+    <th colspan="3" class="table--checkout--review-order--shipping-title">{{ package_name }}</th>
+    <td data-title="{{ package_name }}">
+        {% if available_methods %}
+            <ul id="shipping_method" class="woocommerce-shipping-methods">
+                {% for method in available_methods %}
+                    <li>
+                        {% if 1 < available_methods|length %}
+                            {{
+                                '<input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />'|format(
+                                    0,
+                                    fn('sanitize_title', method.id),
+                                    method.id,
+                                    fn('checked', method.id, chosen_method, false)
+                                )
+                            }}
+                        {% else %}
+                            {{
+                                '<input type="hidden" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" />'|format(
+                                    0,
+                                    fn('sanitize_title', method.id),
+                                    method.id
+                                )
+                            }}
+                        {% endif %}
+
+                        {{
+                            '<label for="shipping_method_%1$s_%2$s">%3$s</label>'|format(0, fn('sanitize_title', method.id), fn('wc_cart_totals_shipping_method_label', method))
+                        }}
+                        {% do action('woocommerce_after_shipping_rate', method, loop.index0) %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elseif not has_calculated_shipping or not show_shipping_caluclator %}
+            {{ __('Enter your address to view shipping options', 'woocommerce') }}
+        {% elseif not fn('is_cart') %}
+            {{ __('There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce') }}
+        {% else %}
+            {{ __('No shipping options were found for %s.', 'woocommerce')|format(formatted_destination) }}
+        {% endif %}
+    </td>
+</tr>

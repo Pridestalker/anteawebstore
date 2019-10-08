@@ -120,14 +120,36 @@ class BannerWidget extends Widget_Base
     {
         $settings = $this->get_settings();
         $context = Timber::get_context();
-        $image = new Image(
-            $settings['image']['id'] !== '' ? $settings['image']['id'] : $settings['image']['url']
-        );
+        $image = new Image($this->get_image($settings));
         
         $context['image'] = $image->src($settings['image_size'] ?? 'full');
         $context['title'] = $settings['content'];
-        $context['link'] = $settings['link'];
+        $context['link'] = $this->get_link($settings);
         
         Timber::render('partials/blocks/CTABanner.twig', $context);
+    }
+    
+    /**
+     * @param array $settings
+     *
+     * @return int|string
+     */
+    private function get_image($settings)
+    {
+        return $settings['image']['id'] !== '' ? $settings['image']['id'] : $settings['image']['url'];
+    }
+    
+    /**
+     * @param array $settings
+     *
+     * @return bool|array
+     */
+    private function get_link($settings)
+    {
+        if ($settings['link']['url'] !== '') {
+            return $settings['link'];
+        }
+        
+        return false;
     }
 }

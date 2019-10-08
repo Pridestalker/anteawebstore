@@ -1,4 +1,7 @@
 <?php
+/**
+ * @global WC_Payment_Gateways $available_gateways
+ */
 
 use Timber\Timber;
 

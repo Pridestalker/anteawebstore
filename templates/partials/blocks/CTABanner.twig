@@ -5,9 +5,11 @@
 
 <a
     class="cta-banner-wrapper"
-    href="{{ link.url }}"
-    {% if link.is_external %} target="_blank" {% endif %}
-    {% if link.nofollow %} rel="nofollow" {% endif %}
+    {% if link %}
+        href="{{ link.url }}"
+        {% if link.is_external %} target="_blank" {% endif %}
+        {% if link.nofollow %} rel="nofollow" {% endif %}
+    {% endif %}
 >
     <aside
             class="cta-banner-background"

@@ -4,20 +4,19 @@
     <div class="container auto">
         {% do action('woocommerce_before_single_product') %}
     </div>
-
-    {{ include('partials/woocommerce/product/header.html.twig') }}
+    {{ include(['partials/woocommerce/variation/header.html.twig', 'partials/woocommerce/product/header.html.twig']) }}
 
     <div class="container auto product">
         <main class="grid">
             <section class="col-9 content">
-                {{ include('partials/woocommerce/product/tabs.html.twig') }}
+                {{ include(['partials/woocommerce/variation/tabs.html.twig', 'partials/woocommerce/product/tabs.html.twig']) }}
             </section>
             <div class="col-3">
-                {{ include('partials/woocommerce/variation/sidebar.html.twig') }}
+                {{ include(['partials/woocommerce/variation/sidebar.html.twig', 'partials/woocommerce/product/sidebar.html.twig']) }}
             </div>
         </main>
 
-        {{ include('partials/woocommerce/product/related.html.twig') }}
+        {{ include(['partials/woocommerce/variation/related.html.twig', 'partials/woocommerce/product/related.html.twig']) }}
     </div>
 
     {% do action('woocommerce_after_single_product') %}

@@ -34,3 +34,12 @@ add_action('elementor/theme/register_locations', static function ($elementor_the
         ]
     );
 });
+
+add_action('init', static function () {
+    add_post_type_support('product', 'revisions');
+});
+
+
+if (is_checkout()) {
+    add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+}
