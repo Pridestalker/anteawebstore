@@ -1,4 +1,3 @@
-
 <div class="container auto">
     {% do action('woocommerce_before_cart') %}
     <h1 class="page-title mobile-padded">
@@ -10,10 +9,8 @@
         <table class="table--cart table">
             <thead class="table-header table-header--cart">
                 <tr>
-                    <!-- Delete product -->
-                    <th>&nbsp;</th>
-                    <!-- Thumbnail product -->
-                    <th>&nbsp;</th>
+                    <!-- Delete & Thumbnail product -->
+                    <th colspan="2">&nbsp;</th>
                     <th>Product</th>
                     <th>Prijs</th>
                     <th>Aantal</th>
@@ -21,10 +18,14 @@
                 </tr>
             </thead>
             <tbody class="table-body table-body--cart">
-
             {% for key, product in cart_items %}
                 {% set _product = fn('wc_get_product', product.product_id) %}
                 {% set _thumb = Image(_product.get_image_id) %}
+                {% if product.variation_id > 0 %}
+                    {% set _variation = fn('wc_get_product', product.variation_id) %}
+                {% else %}
+                    {% set _variation = false %}
+                {% endif %}
                 <tr class="table-row--cart table-row">
                     <td class="cart-delete" data-title="{{ __('Remove', 'woocommerce') }}">
                         <a href="{{ fn('wc_get_cart_remove_url', key) }}"
@@ -44,7 +45,11 @@
                     </td>
 
                     <td class="cart-price cart-price--single" data-title="{{ __('Price', 'woocommerce') }}">
-                        {{ cart.get_product_price(_product) }}
+                        {% if _variation %}
+                            {{ cart.get_product_price(_variation) }}
+                        {% else %}
+                            {{ cart.get_product_price(_product) }}
+                        {% endif %}
                     </td>
 
                     <td data-title="{{ __('Quantity', 'woocommerce') }}" class="cart-qty">
@@ -64,20 +69,19 @@
                             _qty|apply_filters('woocommerce_cart_item_quantity', _qty, key, product)
                         }}
                     </td>
-
                     <td class="cart-price cart-price--subtotal" data-title="{{ __('Subtotal', 'woocommerce') }}">
-                        {{ cart.get_product_subtotal(_product, product.quantity) }}
+                        {% if _variation %}
+                            {{ cart.get_product_subtotal(_variation, product.quantity) }}
+                        {% else %}
+                            {{ cart.get_product_subtotal(_product, product.quantity) }}
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
             <tfoot>
             <tr class="table-footer--cart table-footer">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="5"></td>
                 <td class="cart-totals" data-title="{{ __('Total', 'woocommerce') }}">
                     {{ fn('wc_cart_totals_order_total_html') }}
                 </td>
