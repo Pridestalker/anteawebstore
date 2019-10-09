@@ -51,6 +51,14 @@
   td {
     padding: $ctable-padding--footer;
   }
+
+  th {
+    padding: 1rem;
+    text-align: left;
+    @media screen and (max-width: map-get($screens, 'md')) {
+      display: none;
+    }
+  }
 }
 
 .cart-delete--circle {

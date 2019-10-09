@@ -1,8 +1,8 @@
 <main>
     <!-- TODO: Remove actions from 'woocommerce_before_checkout_form -->
+    {#    {% do action('woocommerce_before_checkout_form', checkout) %}#}
 
     <section class="container auto">
-{#    {% do action('woocommerce_before_checkout_form', checkout) %}#}
         <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
             <p>
@@ -50,22 +50,19 @@
                         <a class="showcoupon checkout-add-coupon" href="#">
                             Kortingscode toevoegen
                         </a>
+
+                        <h2 class="page-title">
+                            Betaalgegevens
+                        </h2>
+                        <div class="grid">
+                            <section class="col-12">
+                                {% do fn('woocommerce_checkout_payment') %}
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         {% endif %}
-
-        <div class="container auto mobile-padded">
-            <h2 class="page-title">
-                Betaalgegevens
-            </h2>
-            <div class="grid">
-                <section class="col-4">
-                    {% do fn('woocommerce_checkout_payment') %}
-                </section>
-            </div>
-        </div>
-
         {% do action('woocommerce_after_checkout_form', checkout) %}
     </form>
 </main>

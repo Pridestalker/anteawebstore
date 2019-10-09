@@ -5,6 +5,11 @@
         {% for key, product in cart_items %}
             {% set _product = fn('wc_get_product', product.product_id) %}
             {% set _thumb = Image(_product.get_image_id) %}
+            {% if product.variation_id > 0 %}
+                {% set _variation = fn('wc_get_product', product.variation_id) %}
+            {% else %}
+                {% set _variation = false %}
+            {% endif %}
 
             <tr class="table-row table-row--checkout--review-order">
                 <td class="checkout-thumbnail">
@@ -24,7 +29,11 @@
                 </td>
 
                 <td class="checkout-price checkout-price--subtotal" data-title="{{ __('Subtotal', 'woocommerce') }}">
-                    {{ cart.get_product_subtotal(_product, product.quantity) }}
+                    {% if _variation %}
+                        {{ cart.get_product_subtotal(_variation, product.quantity) }}
+                    {% else %}
+                        {{ cart.get_product_subtotal(_product, product.quantity) }}
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

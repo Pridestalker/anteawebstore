@@ -9,7 +9,7 @@
         <table class="table--cart table">
             <thead class="table-header table-header--cart">
                 <tr>
-                    <!-- Delete & Thumbnail product -->
+                    <!-- Product delete & thumbnail  -->
                     <th colspan="2">&nbsp;</th>
                     <th>Product</th>
                     <th>Prijs</th>
@@ -19,73 +19,22 @@
             </thead>
             <tbody class="table-body table-body--cart">
             {% for key, product in cart_items %}
-                {% set _product = fn('wc_get_product', product.product_id) %}
-                {% set _thumb = Image(_product.get_image_id) %}
-                {% if product.variation_id > 0 %}
-                    {% set _variation = fn('wc_get_product', product.variation_id) %}
-                {% else %}
-                    {% set _variation = false %}
-                {% endif %}
-                <tr class="table-row--cart table-row">
-                    <td class="cart-delete" data-title="{{ __('Remove', 'woocommerce') }}">
-                        <a href="{{ fn('wc_get_cart_remove_url', key) }}"
-                           class="fa-stack fa-xs" data-product_id="{{ _product.get_id }}"
-                            data-product_sku="{{ _product.get_sku }}">
-                            <i class="fas fa-circle fa-stack-2x cart-delete--circle"></i>
-                            <i class="fas fa-times fa-stack-1x cart-delete--times"></i>
-                        </a>
-                    </td>
-
-                    <td class="cart-thumbnail">
-                        <img src="{{ _thumb.src('thumbnail') }}" alt="{{ _product.get_name }}" class="cart-thumbnail--image">
-                    </td>
-
-                    <td class="cart-title" data-title="{{ __('Product', 'woocommerce') }}">
-                        {{ product.data.get_name }}
-                    </td>
-
-                    <td class="cart-price cart-price--single" data-title="{{ __('Price', 'woocommerce') }}">
-                        {% if _variation %}
-                            {{ cart.get_product_price(_variation) }}
-                        {% else %}
-                            {{ cart.get_product_price(_product) }}
-                        {% endif %}
-                    </td>
-
-                    <td data-title="{{ __('Quantity', 'woocommerce') }}" class="cart-qty">
-                        {% set _qty = fn(
-                            'woocommerce_quantity_input',
-                            {
-                                'input_name': 'cart[' ~ key ~ '][qty]',
-                                'input_value': product.quantity,
-                                'max_value': _product.get_max_purchase_quantity,
-                                'min_value': 0,
-                                'product_name': _product.get_name
-                            },
-                            _product,
-                            false
-                            ) %}
-                        {{
-                            _qty|apply_filters('woocommerce_cart_item_quantity', _qty, key, product)
-                        }}
-                    </td>
-                    <td class="cart-price cart-price--subtotal" data-title="{{ __('Subtotal', 'woocommerce') }}">
-                        {% if _variation %}
-                            {{ cart.get_product_subtotal(_variation, product.quantity) }}
-                        {% else %}
-                            {{ cart.get_product_subtotal(_product, product.quantity) }}
-                        {% endif %}
-                    </td>
-                </tr>
+               {{ include('partials/woocommerce/cart/item.html.twig', { key: key, product: product }) }}
             {% endfor %}
             </tbody>
             <tfoot>
-            <tr class="table-footer--cart table-footer">
-                <td colspan="5"></td>
-                <td class="cart-totals" data-title="{{ __('Total', 'woocommerce') }}">
-                    {{ fn('wc_cart_totals_order_total_html') }}
-                </td>
-            </tr>
+                <tr class="table-footer--cart table-footer">
+                    <th colspan="5">{{ __('VAT', 'woocommerce') }}</th>
+                    <td class="cart-totals" data-title="{{ __('VAT', 'woocommerce') }}">
+                        &euro;{{ cart.get_total_tax }}
+                    </td>
+                </tr>
+                <tr class="table-footer--cart table-footer">
+                    <td colspan="5"></td>
+                    <td class="cart-totals" data-title="{{ __('Total', 'woocommerce') }}">
+                        {{ fn('wc_cart_totals_order_total_html') }}
+                    </td>
+                </tr>
             </tfoot>
         </table>
 
@@ -102,9 +51,10 @@
 
 <div class="container auto">
     <section class="cart-container--button">
-        <a href="{{ fn('wc_get_checkout_url') }}" class="cart-proceed-to-checkout">
-            afrekenen
+        <a href="{{ fn('wc_get_checkout_url') }}" class="cart-proceed-to-checkout" title="Afrekenen">
+            Afrekenen
         </a>
     </section>
 </div>
+
 {% do action('woocommerce_after_cart') %}

@@ -1,6 +1,8 @@
 {% extends 'layouts/app.twig' %}
 
 {% block content %}
+    {% do fn('wc_print_notices') %}
+
     <main class="content">
         {{ post.content }}
     </main>

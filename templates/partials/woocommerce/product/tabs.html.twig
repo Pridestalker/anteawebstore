@@ -2,12 +2,16 @@
     <button class="js-product-tab product-tabs product-tabs--active" data-target="#description">
         <i class="fas fa-align-left"></i> Omschrijving
     </button>
-    <button class="js-product-tab product-tabs" data-target="#eigenschappen">
-        <i class="fas fa-bookmark"></i> Eigenschappen
-    </button>
-    <button class="js-product-tab product-tabs" data-target="#faq">
-        <i class="fas fa-question"></i> Veelgestelde vragen
-    </button>
+    {% if product.get_attributes %}
+        <button class="js-product-tab product-tabs" data-target="#eigenschappen">
+            <i class="fas fa-bookmark"></i> Eigenschappen
+        </button>
+    {% endif %}
+    {% if post.get_field('faq') %}
+        <button class="js-product-tab product-tabs" data-target="#faq">
+            <i class="fas fa-question"></i> Veelgestelde vragen
+        </button>
+    {% endif %}
     <button class="js-product-tab product-tabs" data-target="#review">
         <i class="fas fa-star"></i> Reviews (0)
     </button>
@@ -15,9 +19,13 @@
 <section class="tab-content">
     {{ include('partials/woocommerce/product/tabs/description.html.twig') }}
 
-    {{ include('partials/woocommerce/product/tabs/attributes.html.twig') }}
+    {% if product.get_attributes %}
+        {{ include('partials/woocommerce/product/tabs/attributes.html.twig') }}
+    {% endif %}
 
-    {{ include('partials/woocommerce/product/tabs/faq.html.twig') }}
+    {% if post.get_field('faq') %}
+        {{ include('partials/woocommerce/product/tabs/faq.html.twig') }}
+    {% endif %}
 
     {{ include('partials/woocommerce/product/tabs/reviews.html.twig') }}
 </section>

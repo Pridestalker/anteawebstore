@@ -60,7 +60,7 @@ trait FontAwesome
     {
         $data = [];
         foreach ($this->icons as $icon) {
-            $data[str_replace(' ', '_', $icon['icon'])] = $icon['title'];
+            $data[$icon['icon']] = $icon['title'];
         }
         
         return $data;

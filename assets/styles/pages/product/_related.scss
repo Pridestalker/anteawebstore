@@ -1,0 +1,13 @@
+/* autoprefixer grid: autoplace */
+.related-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+/* autoprefixer grid: false */
