@@ -28,6 +28,7 @@ class CheckoutServiceProvider
             [
                 'label'    => __('Kostenplaats', 'agws'),
                 'required' => false,
+                'placeholder'   => 'Invullen indien van toepassing',
                 'class'    => [ 'form-row-wide', 'checkout-form--kostenplaats' ],
                 'clear'    => true,
             ],
@@ -39,6 +40,7 @@ class CheckoutServiceProvider
             [
                 'label'    => __('Opdrachtnummer', 'agws'),
                 'required' => false,
+                'placeholder'   => 'Invullen indien van toepassing',
                 'class'    => [ 'form-row-wide', 'checkout-form--opdrachtnr' ],
                 'clear'    => true,
             ],
