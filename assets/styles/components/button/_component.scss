@@ -1,8 +1,7 @@
 %btn {
+  border: 0;
+  background: transparent;
   all: unset;
-  border: unset;
-  background: unset;
-  color: unset;
   border-radius: $btn-default-radius;
   padding: $btn-default-padding;
   color: $btn-default-color;
