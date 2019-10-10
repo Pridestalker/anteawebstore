@@ -26,7 +26,7 @@
                 <tr class="table-footer--cart table-footer">
                     <th colspan="5">{{ __('VAT', 'woocommerce') }}</th>
                     <td class="cart-totals" data-title="{{ __('VAT', 'woocommerce') }}">
-                        &euro;{{ cart.get_total_tax }}
+                        {{ fn('wc_cart_totals_taxes_total_html') }}
                     </td>
                 </tr>
                 <tr class="table-footer--cart table-footer">
@@ -38,9 +38,8 @@
             </tfoot>
         </table>
 
-        <button type="submit" class="btn" name="update_cart" value="{{ __('Update cart', 'woocommerce') }}" style="display: none;">
-            {{ __('Update cart', 'woocommerce') }}
-        </button>
+        <input type="submit" class="btn" name="update_cart" value="{{ __('Update cart', 'woocommerce') }}" style="display: none;" />
+
 
         {{ fn('wp_nonce_field', 'woocommerce-cart', 'woocommerce-cart-nonce') }}
         {% do action('woocommerce_after_cart_table') %}

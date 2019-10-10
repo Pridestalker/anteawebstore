@@ -1,0 +1,19 @@
+<form class="checkout_coupon woocommerce-form-coupon" method="post" style="display: none;">
+    <p>
+        {{ __('Als je een kortingscode hebt kun je deze hieronder invoeren', 'agws') }}
+    </p>
+
+    <p class="form-row form-row-first">
+        <input type="text"
+               name="coupon_code"
+               class="input-text"
+               placeholder="{{ __('Coupon code', 'woocommerce') }}"
+               id="coupon_code" value="" />
+    </p>
+
+    <p class="form-row form-row-last">
+        <button type="submit" class="button" name="apply_coupon" value="{{ __('Coupon code', 'woocommerce') }} {{ __('invoeren', 'agws') }}">{{ __('Coupon code', 'woocommerce') }} {{ __('invoeren', 'agws') }}</button>
+    </p>
+
+    <div class="clear"></div>
+</form>

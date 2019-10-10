@@ -21,8 +21,7 @@ class CheckoutServiceProvider
      *
      * @return void
      */
-    // phpcs:ignore
-    public function custom_checkout_fields( $checkout ): void {
+    public function custom_checkout_fields( $checkout ): void { // phpcs:ignore
         woocommerce_form_field(
             'kostenplaats',
             [
@@ -65,8 +64,7 @@ class CheckoutServiceProvider
      *
      * @return void
      */
-    // phpcs:ignore
-    public function update_checkout_fields($order_id): void
+    public function update_checkout_fields($order_id): void // phpcs:ignore
     {
         if (!empty($_POST['kostenplaats'])) {
             update_post_meta(
@@ -98,8 +96,7 @@ class CheckoutServiceProvider
      *
      * @return void
      */
-    // phpcs:ignore
-    public function show_checkout_fields_order($order): void
+    public function show_checkout_fields_order($order): void // phpcs:ignore
     {
         ?>
         <p><strong>Kostenplaats:</strong> <?= $order->get_meta('kostenplaats') ?></p>
@@ -114,10 +111,10 @@ class CheckoutServiceProvider
      *
      * @return array
      */
-    // phpcs:ignore
-    public function custom_checkout_fields_order($checkout_fields)
+    public function custom_checkout_fields_order($checkout_fields) // phpcs:ignore
     {
         $checkout_fields['billing']['billing_email']['priority'] = 20;
+        $checkout_fields['billing']['billing_address_1']['placeholder'] = null;
         return $checkout_fields;
     }
 }

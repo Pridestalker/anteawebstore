@@ -9,9 +9,6 @@
   animation: float-in 6s forwards;
 
   @media screen and (max-width: map-get($screens, 'md')) {
-    bottom: 35%;
-    left: 0;
-    right: 0;
     text-align: center;
   }
 
@@ -24,6 +21,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: map-get($screens, 'md')) {
+    flex-direction: column;
+  }
 }
 
 @keyframes float-in {

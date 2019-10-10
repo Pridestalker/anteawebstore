@@ -12,7 +12,7 @@ $nav-item-spacing: get-spacing('xl') !default;
 $nav-item-color: theme-get-color('primary') !default;
 $nav-item-color-hover: adjust-color(theme-get-color('primary'), $lightness: 20%) !default;
 
-$logo-bar-menu-spacing: $nav-item-spacing / 2 !default;
+$logo-bar-menu-spacing: 1.5rem !default;
 
 $sf-input-default-hidden: true !default;
 $sf-button-color: theme-get-color('primary') !default;

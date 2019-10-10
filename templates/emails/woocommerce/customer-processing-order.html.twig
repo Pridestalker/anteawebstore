@@ -1,0 +1,54 @@
+{% do action('woocommerce_email_header', email_heading, email) %}
+<p>
+    {{ __('Bedankt %s %s,', agws)|format(order.get_billing_first_name, order.get_billing_last_name) }}
+</p>
+<p>
+    Fijn dat je koos voor de Antea Group Webstore. We gaan direct voor je aan de slag!
+</p>
+
+<h2>
+    Dit heb je besteld:
+</h2>
+
+{% do action('woocommerce_email_order_details', order, sent_to_admin, plain_text, email) %}
+
+{% do action('woocommerce_email_customer_details', order, sent_to_admin, plain_text, email) %}
+<h2>
+    Hoe nu verder?
+</h2>
+<p>
+    Wanneer je een bestelling plaatst in onze Webstore, versturen we het verzoek door naar de desbetreffende contactpersoon.
+    Hij of zij reageert binnen 48 uur via e-mail of telefonisch met een bevestiging van de afspraak.
+    Samen komen jullie overeen wanneer de dienst geleverd wordt.
+</p>
+
+<h2>
+    Kan ik de bestelling nog wijzigen of annuleren?
+</h2>
+
+<p>
+    Je kunt de bestelling niet meer online wijzigingen omdat deze al in het bestelproces zit.
+    Je kunt de afspraak wel annuleren door contact op te nemen met de klantenservice via 036 XXXX of
+    via WhatsApp [LINK].
+</p>
+
+<h2>
+    Waar vind ik de factuur?
+</h2>
+<p>
+    Wanneer je inlogt op de Webstore vind je bij ‘Bestellingen’ een overzicht van de bestelling en de kosten.
+    Wanneer je op factuur wilt betalen, ontvang je deze factuur na contact met de desbetreffende adviseur
+    van Antea Group die jouw bestelling in behandeling neemt.
+</p>
+
+<h2>Heb je ons nodig?</h2>
+<p>
+    Onze klantenservice staat op werkdagen voor je klaar van 8:00 tot 21:00 uur.
+    We zijn te bereiken via telefoon, contactformulier en WhatsApp.
+</p>
+
+{% if additional_content %}
+    {{ fn('wp_kses_post', fn('wpautop', fn('wptexturize', additional_content))) }}
+{% endif %}
+
+{% do action('woocommerce_email_footer', email) %}

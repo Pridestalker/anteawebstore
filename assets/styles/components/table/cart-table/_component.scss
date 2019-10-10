@@ -4,7 +4,7 @@
   text-align: $ctable-textalign;
 
   @media screen and (max-width: map-get($screens, 'md')) {
-    width: 100%;
+    width: auto;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;

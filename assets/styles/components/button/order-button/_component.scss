@@ -1,5 +1,6 @@
 %add-to-cart-button {
   @extend %btn;
+  -webkit-text-fill-color: $button-atc-color;
   color: $button-atc-color;
   background: $button-atc-background;
 

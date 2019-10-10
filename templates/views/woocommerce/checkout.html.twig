@@ -1,26 +1,6 @@
 <main>
-    <!-- TODO: Remove actions from 'woocommerce_before_checkout_form -->
-    {#    {% do action('woocommerce_before_checkout_form', checkout) %}#}
-
     <section class="container auto">
-        <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
-
-            <p>
-                {{ __('If you have a coupon code, please apply it below.', 'woocommerce') }}
-            </p>
-
-            <p class="form-row form-row-first">
-                <input type="text" name="coupon_code" class="input-text" placeholder="{{ __('Coupon code', 'woocommerce') }}" id="coupon_code" value="" />
-            </p>
-
-            <p class="form-row form-row-last">
-                <button type="submit" class="button" name="apply_coupon" value="{{ __('Apply coupon', 'woocommerce') }}">
-                    {{ __('Apply coupon', 'woocommerce') }}
-                </button>
-            </p>
-
-            <div class="clear"></div>
-        </form>
+        {% do action('woocommerce_before_checkout_form', checkout) %}
     </section>
 
     <form action="{{ fn('wc_get_checkout_url') }}" method="POST" name="checkout" class="form-checkout checkout woocommerce-checkout">
@@ -50,6 +30,11 @@
                         <a class="showcoupon checkout-add-coupon" href="#">
                             Kortingscode toevoegen
                         </a>
+                        {% if not fn('is_user_logged_in') %}
+                            <a class="showlogin checkout-add-coupon" href="#">
+                                Inloggen
+                            </a>
+                        {% endif %}
 
                         <h2 class="page-title">
                             Betaalgegevens
