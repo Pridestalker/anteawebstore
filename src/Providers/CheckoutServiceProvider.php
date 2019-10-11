@@ -12,6 +12,8 @@ class CheckoutServiceProvider
         add_filter('woocommerce_default_address_fields', [ $this, 'custom_billing_fields' ]);
         add_action('woocommerce_after_checkout_billing_form', [ $this, 'custom_checkout_fields' ]);
         add_action('woocommerce_checkout_update_order_meta', [ $this, 'update_checkout_fields' ]);
+        add_action('woocommerce_checkout_process', [ $this, 'check_fields_values' ]);
+        add_action('woocommerce_review_order_before_submit', [ $this, 'add_checkbox_to_checkout' ]);
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'show_checkout_fields_order']);
     }
     
@@ -90,6 +92,21 @@ class CheckoutServiceProvider
                 sanitize_textarea_field($_POST['opmerkingen'])
             );
         }
+        
+        if (!empty($_POST['gdpr'])) {
+            update_post_meta(
+                $order_id,
+                'gdpr_accepted',
+                time()
+            );
+        }
+    }
+    
+    public function check_fields_values() //phpcs:ignore
+    {
+        if (empty($_POST['gdpr'])) {
+            wc_add_notice(__('Je moet akkoord gaan met de algemene voorwaarden', 'agws'), 'error');
+        }
     }
     
     /**
@@ -102,6 +119,7 @@ class CheckoutServiceProvider
         ?>
         <p><strong>Kostenplaats:</strong> <?= $order->get_meta('kostenplaats') ?></p>
         <p><strong>Opdrachtnummer:</strong> <?= $order->get_meta('opdrachtnr') ?></p>
+        <p><strong>Algemene voorwaarden geaccepteerd op:</strong> <?= date('m/d/Y', (int) $order->get_meta('gdpr')) ?></p>
         <p><strong>Vragen en/of opmerkingen:</strong>
         <p><?= $order->get_meta('opmerkingen') ?></p>
         <?php
@@ -123,9 +141,25 @@ class CheckoutServiceProvider
      *
      * @return array
      */
-    public function custom_billing_fields($address_fields)
+    public function custom_billing_fields($address_fields) // phpcs:ignore
     {
         $address_fields['address_1']['placeholder'] = '';
         return $address_fields;
+    }
+    
+    /**
+     * @return void
+     */
+    public function add_checkbox_to_checkout() // phpcs:ignore
+    {
+        woocommerce_form_field(
+                'gdpr',
+            [
+                'type'          => 'checkbox',
+                'class'         => ['form-row privacy', 'checkout-form--privacy'],
+                'required'      => true,
+                'label'         => sprintf(__('Ik ga akkoord met de <a href="%s">algemene voorwaarden</a>'), 'https://www.anteagroup.nl/sites/default/files/files/Algemene-voorwaarden_Antea-Group-2018.pdf')
+            ]
+        );
     }
 }
