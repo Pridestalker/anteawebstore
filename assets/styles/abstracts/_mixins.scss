@@ -5,7 +5,7 @@
 }
 
 @mixin min-breakpoint($breakpoint) {
-  @media (min-width: $breakpoint) {
+  @media (min-width: #{$breakpoint}) {
     @content;
   }
 }

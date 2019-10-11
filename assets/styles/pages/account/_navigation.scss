@@ -14,16 +14,15 @@
   margin-bottom: get-spacing('sm');
 }
 
-@include min-breakpoint('md') {
-  .account-sidenav {
-    float: left;
-  }
+.account-sidenav {
+  float: left;
 }
 
 .account-sidenav {
-  float: none;
+  @media screen and (max-width: map-get($screens, 'md')) {
+    float: none;
+  }
 }
-
 .account-sidenav {
   margin-bottom: 2rem;
 }

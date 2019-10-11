@@ -1,1 +1,12 @@
 @import "navigation";
+
+.order-number,
+.order-date,
+.order-status {
+  background: none;
+
+  &::selection {
+    color: theme-get-color('primary');
+    background: theme-get-color('secondary');
+  }
+}
