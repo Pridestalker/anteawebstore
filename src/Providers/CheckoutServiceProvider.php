@@ -9,6 +9,7 @@ class CheckoutServiceProvider
     public function __construct()
     {
         add_filter('woocommerce_checkout_fields', [ $this, 'custom_checkout_fields_order' ]);
+        add_filter('woocommerce_default_address_fields', [ $this, 'custom_billing_fields' ]);
         add_action('woocommerce_after_checkout_billing_form', [ $this, 'custom_checkout_fields' ]);
         add_action('woocommerce_checkout_update_order_meta', [ $this, 'update_checkout_fields' ]);
         add_action('woocommerce_admin_order_data_after_billing_address', [$this, 'show_checkout_fields_order']);
@@ -114,7 +115,17 @@ class CheckoutServiceProvider
     public function custom_checkout_fields_order($checkout_fields) // phpcs:ignore
     {
         $checkout_fields['billing']['billing_email']['priority'] = 20;
-        $checkout_fields['billing']['billing_address_1']['placeholder'] = null;
         return $checkout_fields;
+    }
+    
+    /**
+     * @param array $address_fields
+     *
+     * @return array
+     */
+    public function custom_billing_fields($address_fields)
+    {
+        $address_fields['address_1']['placeholder'] = '';
+        return $address_fields;
     }
 }
