@@ -12,9 +12,11 @@
             <i class="fas fa-question"></i> Veelgestelde vragen
         </button>
     {% endif %}
-    <button class="js-product-tab product-tabs" data-target="#review">
-        <i class="fas fa-star"></i> Reviews (0)
-    </button>
+    {% if product.get_review_count > 0 or product.get_reviews_allowed %}
+        <button class="js-product-tab product-tabs" data-target="#review">
+            <i class="fas fa-star"></i> Reviews ({{ product.get_review_count }})
+        </button>
+    {% endif %}
 </nav>
 <section class="tab-content">
     {{ include('partials/woocommerce/product/tabs/description.html.twig') }}
@@ -27,5 +29,7 @@
         {{ include('partials/woocommerce/product/tabs/faq.html.twig') }}
     {% endif %}
 
-    {{ include('partials/woocommerce/product/tabs/reviews.html.twig') }}
+    {% if product.get_review_count > 0 or product.get_reviews_allowed %}
+        {{ include('partials/woocommerce/product/tabs/reviews.html.twig') }}
+    {% endif %}
 </section>

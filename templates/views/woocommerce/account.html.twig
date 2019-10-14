@@ -2,4 +2,9 @@
 
 {% do action('woocommerce_account_dashboard') %}
 
+<section class="content">
+    <p>Welkom {{ user.user_nicename }}</p>
+    <p>Vanaf je account dashboard kun je je recente bestellingen bekijken, je verzend- en factuuradressen beheren en je wachtwoord en account details bewerken.</p>
+</section>
+
 {% do action('woocommerce_after_my_account') %}
