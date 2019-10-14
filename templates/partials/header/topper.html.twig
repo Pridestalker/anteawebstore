@@ -1,11 +1,21 @@
+<script>
+    function closeBanner() {
+        document.querySelector('.js-ie-only-banner').style.display = 'none';
+    }
+</script>
 <div class="js-ie-only-banner ie-only-banner" style="display: none">
     <div class="container auto content">
         <h2>
             {{ __('Let op: Je gebruikt een verouderde browser.') }}
         </h2>
+
         <p>
             {{ __('Deze browser is niet meer volledig ondersteund. Maak gebruik van een andere optie, zoals Google Chrome.', 'agws') }}
         </p>
+
+        <button class="button" onclick="closeBanner()" style="margin-bottom: 1rem;">
+            Sluit melding
+        </button>
     </div>
 </div>
 

@@ -24,6 +24,10 @@
   .product-card--h--image,
   .product-card--h--image--hover {
     height: 100%;
+
+    @media screen and (max-width: 768px) {
+      height: auto;
+    }
   }
 }
 
@@ -52,12 +56,13 @@
 .product-card--h--content {
   padding: 2rem;
   max-width: 50%;
-  @include max-breakpoint('lg') {
+  @media screen and (max-width: map-get($screens, 'lg')) {
     max-width: 35%;
   }
 
-  @include max-breakpoint('md') {
+  @media screen and (max-width: map-get($screens, 'md')) {
     max-width: 100%;
+
   }
 }
 

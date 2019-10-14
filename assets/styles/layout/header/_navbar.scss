@@ -19,6 +19,14 @@
   @media screen and (max-width: map-get($screens, 'md')) {
     padding: #{get-spacing('md') + get-spacing('sm')} 1rem;
     max-width: calc(100vw - 2rem);
+
+    @if $header-is-sticky {
+      top: 60.4px;
+
+      .admin-bar & {
+        top: 92.4px;
+      }
+    }
   }
 }
 

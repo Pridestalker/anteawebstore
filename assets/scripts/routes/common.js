@@ -24,6 +24,5 @@ const showBannerOnIE = () => {
         if (banner) {
             banner.style.display = 'block';
         }
-
     }
 }
