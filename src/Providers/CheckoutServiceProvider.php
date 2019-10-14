@@ -119,7 +119,6 @@ class CheckoutServiceProvider
         ?>
         <p><strong>Kostenplaats:</strong> <?= $order->get_meta('kostenplaats') ?></p>
         <p><strong>Opdrachtnummer:</strong> <?= $order->get_meta('opdrachtnr') ?></p>
-        <p><strong>Algemene voorwaarden geaccepteerd op:</strong> <?= date('m/d/Y', (int) $order->get_meta('gdpr')) ?></p>
         <p><strong>Vragen en/of opmerkingen:</strong>
         <p><?= $order->get_meta('opmerkingen') ?></p>
         <?php
