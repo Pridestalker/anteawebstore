@@ -8,4 +8,4 @@ const detectIE = () => {
     return msie > 0 || trident > 0;
 }
 
-export default { detectIE }
+export { detectIE }
