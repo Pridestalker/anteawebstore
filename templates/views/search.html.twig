@@ -11,7 +11,7 @@
             {% endif %}
         </h1>
 
-        {% if posts %}
+        {% if posts|length > 0 %}
         <section class="grid">
             {% for post in posts %}
                 <article class="search-result col-6">

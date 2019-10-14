@@ -29,10 +29,10 @@
 }
 
 .search-form-button {
-  @extend %transitioning;
-  all: unset;
+  @extend %transitioning, %btn;
   color: $sf-button-color;
   cursor: pointer;
+  padding: 0;
 
   &:hover {
     color: $sf-button-color-hover;

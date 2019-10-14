@@ -7,7 +7,7 @@
 }
 
 .product-tabs {
-  all: unset;
+  @extend %btn;
   @each $border, $val in $tabs-product-borders {
     @if $val {
       border-#{$border}: $tabs-product-borderwidth $tabs-product-borderstyle $tabs-product-bordercolor;

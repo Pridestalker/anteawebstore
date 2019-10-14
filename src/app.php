@@ -54,7 +54,7 @@ add_filter('woocommerce_get_order_item_totals', static function ($total_rows, $o
     $rows = Collection::from($total_rows);
     
     $rows = $rows->map(static function ($item, $key) {
-        if ($key === 'belasting-1') {
+        if (mb_strpos($key, 'belasting') !== false) {
             $item ['label'] = 'BTW:';
         }
         
