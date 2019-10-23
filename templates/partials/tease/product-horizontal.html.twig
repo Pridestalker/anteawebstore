@@ -11,9 +11,9 @@
 <article class="product-card product-card--horizontal">
     <figure class="product-card--h--image-wrapper">
         <a href="{{ _product.get_permalink }}" title="{{ product.title }}">
-            <img class="product-card--h--image" src="{{ product.thumbnail('full') }}" alt="{{ product.thumbnail.alt?? product.title }}" />
+            <img class="product-card--h--image" src="{{ product.thumbnail('full') }}" alt="{{ product.title }}" />
 
-            <img alt="{{ _hoverImage.alt?? product.title }}" class="product-card--h--image--hover" src="{{ _hoverImage ? _hoverImage.src('full') : product.thumbnail('full') }}" />
+            <img alt="{{ product.title }}" class="product-card--h--image--hover" src="{{ _hoverImage ? _hoverImage.src('full') : product.thumbnail('full') }}" />
         </a>
     </figure>
 

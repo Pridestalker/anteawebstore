@@ -11,11 +11,11 @@
 <article class="product-card--vertical product-card">
     <figure>
         <a href="{{ product.link }}">
-            <img alt="{{ product.thumbnail.alt?? product.title }}"
+            <img alt="{{ product.title }}"
                  class="product-card--v--image"
                  src="{{ product.thumbnail('full') }}" />
 
-            <img alt="{{ _hoverImage.alt?? product.title }}"
+            <img alt="{{ product.title }}"
                  class="product-card--v--image--hover"
                  src="{{ _hoverImage ? _hoverImage.src('full') : product.thumbnail('full') }}"
                 />
